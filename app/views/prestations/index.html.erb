@@ -1,0 +1,12 @@
+<h2>Dernières prestations</h2>
+
+<%= @prestations.limit(20).each do |prestation| %>
+  <%= link_to "prestation_path(@prestation)" do %>
+    <div class="card-prestation">
+      <img src="https://static1.purepeople.com/articles/3/38/32/43/@/5524130-mickael-vendetta-en-mai-2010-au-mathi-s-624x600-3.jpg" alt="Mickael Vendetta">
+      <%=  prestation.name %>
+      <%=  prestation.punchline %>
+      <%=  "#{prestation.price}€/prestation"%>
+    <% end %>
+  </div>
+  <% end  %>
