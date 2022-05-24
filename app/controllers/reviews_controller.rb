@@ -15,10 +15,13 @@ class ReviewsController < ApplicationController
     redirect_to users_path(current_user)
 
     # Afficher le rating moyen total de sa prestation.
-
   end
 
   def show
+
+  end
+
+  def new
 
   end
 
