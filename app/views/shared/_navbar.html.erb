@@ -1,0 +1,53 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <div id="text-navbar">
+      <h1>Rotten Stars</h1>
+    </div>
+
+    <%= image_tag "logo_rotten_stars", class:"center"%>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <%# <% if user_signed_in? %>
+          <%# <li class="nav-item active"> %>
+
+    <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "#" do %>
+                <p class= "dropdown-item">Action</p>
+              <% end %>
+              <%= link_to "#" do %>
+                <p class= "dropdown-item">Another action</p>
+              <% end %>
+              <%# <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "#" do %>
+              <p class="pr-12">Home</p>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "#" do %>
+              <p class="pr-32">Messages</p>
+            <% end %>
+          </li>
+
+        <%# <% else %>
+          <li class="nav-item">
+            <%= link_to "#" do %>
+            <%# new_user_session_path %>
+            <p class="pr-32">Connexion</p>
+            <% end %>
+          </li>
+        <%# <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

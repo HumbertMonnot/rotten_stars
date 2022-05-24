@@ -1,6 +1,5 @@
 class Prestation < ApplicationRecord
   belongs_to :user
-  belongs_to :user, through: :reservation
 
   validates :name, presence: true
   validates :category, inclusion: { in: ['sing', 'danse'] }
