@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 puts "suppression des Reviews"
 Review.destroy_all
@@ -27,6 +28,13 @@ puts "creation of users"
     last_name: Faker::Name.last_name,
     phone_number: Faker::Number.leading_zero_number(digits: 10)
   )
+end
+
+puts "Taking avatars"
+
+User.all.each do |user|
+  file = URI.open('https://i.pravatar.cc/100')
+  user.avatar.attach(io: file, filename: "#{user.first_name}_#{user.last_name}.png", content_type: 'image/png')
 end
 
 puts "creation of prestations"
