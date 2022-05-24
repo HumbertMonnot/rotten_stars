@@ -8,5 +8,5 @@ class Prestation < ApplicationRecord
   validates :price, numericality: true
   validates :address, presence: true
   validates :distance, numericality: true
-  validates :punchline, presence: true
+  validates :punchline, presence: true, length: { in: 5..30 }
 end
