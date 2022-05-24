@@ -13,6 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+   <div id="page-container">
+   <div id="content">
+      <%= yield %>
+  </div>
+   <div>
+   <%= render 'shared/footer' %>
+   </div>
+  </div>
   </body>
 </html>
