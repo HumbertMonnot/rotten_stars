@@ -1,9 +1,7 @@
 class Prestation < ApplicationRecord
   belongs_to :user
-<<<<<<< HEAD
   has_many :reservations
-=======
->>>>>>> master
+
 
   validates :name, presence: true
   validates :category, inclusion: { in: ['sing', 'danse'] }

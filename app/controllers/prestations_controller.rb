@@ -1,19 +1,11 @@
 class PrestationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @prestations = Prestation.all
   end
 
   def show
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def destroy
+    @prestation = Prestation.find(params[:id])
   end
 end

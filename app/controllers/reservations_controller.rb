@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :new
+
   def index
     @reservations = current_user.reservations
     @user = current_user
@@ -18,6 +20,14 @@ class ReservationsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def new
+    @reservation = Reservation.new
+    @prestation = Prestation.where(params[:id] == :prestation_id)
+  end
+
+  def create
   end
 
   private

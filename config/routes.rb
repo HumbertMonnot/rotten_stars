@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-<<<<<<< HEAD
+
   root to: 'prestations#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   resources :prestations, only: [:index, :show]
-  resources :users do
-    resources :prestations, only: [:new, :create, :delete]
-=======
-  root to: 'pages#home'
+
+  resources :prestations do
+    resources :reservations, only: [:new, :create]
+  end
+
   resources :users, only: [:show] do
-    resources :reservations, only: [:index, :edit, :update]
+    resources :prestations, only: [:new, :create, :delete]
+    resources :reservations, only: [:index, :edit, :update, :create]
     resources :reviews, only: [:index, :new, :create]
->>>>>>> master
   end
 end

@@ -1,0 +1,17 @@
+<h1><%= @prestation.name %></h1>
+<h2><%= @prestation.category %></h2>
+<h3><%= @prestation.address %></h3>
+
+<img src="https://static1.purepeople.com/articles/3/38/32/43/@/5524130-mickael-vendetta-en-mai-2010-au-mathi-s-624x600-3.jpg" alt="Mickael Vendetta", height="100" width="100">
+
+<div class="card-reservation">
+  <%= "#{@prestation.price}€/prestation" %>
+  <div class="btn">Date</div>
+  <%= link_to new_prestation_reservation_path(@prestation) do %>
+    <div class="btn">Réserver</div>
+  <% end %>
+</div>
+
+<%= link_to prestations_path do %>
+Retour
+<% end %>
