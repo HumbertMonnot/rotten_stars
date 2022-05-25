@@ -1,0 +1,27 @@
+.btn{
+  padding: 10px 25px;
+  border-radius: 4px;
+  background-color: pink;
+  opacity: 0.8;
+  color: white;
+  font-size: 16px;
+  font-family: "open sans", sans-serif;
+  font-weight: 800;
+}
+
+.btn:hover{
+  opacity: 1;
+  color: white;
+}
+
+.fr{
+  float: right;
+}
+
+.w-45{
+  width: 45%;
+}
+
+.mb-32px{
+  margin-bottom: 32px;
+}
