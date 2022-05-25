@@ -1,7 +1,7 @@
 <div class="container">
-  <div>
-    <%= link_to prestations_path do %>
-      Retour
+  <div id="icon-retour">
+    <%= link_to :root do %>
+      <i class="fa-solid fa-angles-left"></i>
     <% end %>
   </div>
 
@@ -12,13 +12,15 @@
 </div>
 
 <div class="img-prestation">
-  <img src="https://static1.purepeople.com/articles/3/38/32/43/@/5524130-mickael-vendetta-en-mai-2010-au-mathi-s-624x600-3.jpg" alt="Mickael Vendetta", height="100" width="100">
+<%= cl_image_tag @prestation.poster.key,height: 400, width: 600 %>
 </div>
 
 <div class="p-prestation">
   <p><%= @prestation.description %></p>
 </div>
 
+
+<div class="ctr-card">
   <div class="card-reservation">
     <h2>Prix</h2>
     <h3><%= "#{@prestation.price}€/prestation" %></h3>
@@ -26,8 +28,9 @@
         <%= f.input :start_date, as: :date, html5: true %>
         <%= f.input :end_date, as: :date, html5: true %>
         <%= f.button :submit, "Réserver", class: 'btn' %>
-      <% end %>
+    <% end %>
   </div>
+
 
   <div class="card-comment">
     <h2 class="card-comment-title">Comment :</h2>
@@ -40,4 +43,5 @@
         <% end %>
       <% end %>
   </div>
+</div>
 </div>
