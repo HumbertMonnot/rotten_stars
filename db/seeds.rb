@@ -20,7 +20,7 @@ User.destroy_all
 
 puts "creation of users"
 
-20.times do
+10.times do
   User.create(
     email: Faker::Internet.email,
     password: "secret",
@@ -39,7 +39,7 @@ end
 
 puts "creation of prestations"
 
-10.times do
+20.times do
   name = Faker::Artist.name
   category = ["sing", "danse"].sample
   description = Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false)
@@ -74,7 +74,7 @@ end
 
 puts "creation of reservations"
 
-10.times do
+40.times do
   year = ['2011', '2012', '2013', '2014', '2015', '2016', '2017'].sample
   month = (1..11).to_a.sample
   day = (1..20).to_a.sample
