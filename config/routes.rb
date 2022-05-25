@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'prestations#index'
 
-  resources :prestations, only: [:index, :show]
-
-  resources :prestations do
+  resources :prestations, only: [:index, :show] do
     resources :reservations, only: [:create]
+  end
+  
+  resources :reservations, only: [:index] do
+    resources :reviews, only: [:new, :create]
   end
 
   resources :users, only: [:show] do
