@@ -3,10 +3,13 @@ body {
   height: 100vh;
 }
 
-#page-container {
- position: relative;
- min-height: 100vh;
- margin-bottom: 100px;
+#content {
+  position: relative;
+  min-height: 100vh;
+ }
+
+ #content-yield{
+   margin-bottom: 100px;
  }
 
 .footer {
@@ -20,9 +23,11 @@ body {
   color: #080808;
   bottom: 0;
   width: 100%;
-  margin-bottom: 0;
+  // margin-bottom: 0;
   font-family: 'open sans', sans-serif;
-  flex-shrink: 0;
+  position: absolute;
+  // flex-shrink: 0;
+
 }
 
 .footer-links {
