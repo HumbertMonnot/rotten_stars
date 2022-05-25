@@ -1,8 +1,8 @@
 class ReservationsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    @reservations = @user.reservations
+    user = User.find(params[:user_id])
+    @reservations = policy_scope(Reservation).where(user: user)
   end
 
   def edit
@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservations_params)
     @reservation.prestation = @prestation
     @reservation.user = current_user
+    authorize(current_user)
     @reservation.state = "pending"
     @reservation.price = @prestation.price
     duration = (@reservation.end_date - @reservation.start_date).to_i / (3600 * 24) + 1

@@ -17,6 +17,10 @@
     <%= f.input :phone_number,
                 required: true,
                 autofocus: true %>
+    <%= f.input :avatar,
+                as: :file,
+                required: true,
+                autofocus: true %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
