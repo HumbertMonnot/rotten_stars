@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     @user = User.find(params[:user_id])
@@ -31,7 +30,7 @@ class ReservationsController < ApplicationController
     duration = (@reservation.end_date - @reservation.start_date).to_i / (3600 * 24) + 1
     @reservation.total = @prestation.price * duration
     if @reservation.save
-      redirect_to prestations_path
+      redirect_to user_path(current_user)
     else
       render "prestations/show"
     end

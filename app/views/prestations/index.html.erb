@@ -1,12 +1,12 @@
-<h2>Dernières prestations</h2>
-
-<% @prestations.limit(10).each do |prestation| %>
-  <%= link_to prestation_path(prestation) do %>
-    <div class="card-prestation">
-      <img src="https://static1.purepeople.com/articles/3/38/32/43/@/5524130-mickael-vendetta-en-mai-2010-au-mathi-s-624x600-3.jpg" alt="Mickael Vendetta">
-      <%=  prestation.name %>
-      <%=  prestation.punchline %>
-      <%=  "#{prestation.price}€/prestation"%>
-    <% end %>
-  <% end  %>
+<% @prestations.each do |prestation| %>
+  <div class = "card-product">
+    <%= cl_image_tag prestation.poster.key %>
+    <div class="card-product-infos">
+      <h2><%= prestation.name %></h2>
+      <p><%= prestation.category %></p> 
+      <p><%= prestation.price %> € par jour de prestation</p>
+    </div>
   </div>
+  <br>
+<% end %>
+

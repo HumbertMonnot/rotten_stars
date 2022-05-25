@@ -1,12 +1,13 @@
 class PrestationsController < ApplicationController
   before_action :set_prestation, only: [:show, :destroy]
-  skip_before_action :authenticate_user!, only: [:new, :create, :destroy]
-
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @prestations = @user.prestations
+  # skip_before_action :authenticate_user!, only: [:index, :new, :create, :destroy]
 
   def index
+    @user = User.find(params[:user_id])
+    @prestations = @user.prestations
+  end
+
+  def home
     @prestations = Prestation.all
   end
 
@@ -20,7 +21,7 @@ class PrestationsController < ApplicationController
 
   def create
     prestation = Prestation.new(prestation_params)
-    prestation.user = User.find(params[:user_id])
+    prestation.user = current_user
     prestation.save
     redirect_to user_prestations_path(prestation.user)
   end
