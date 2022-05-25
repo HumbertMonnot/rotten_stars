@@ -1,8 +1,8 @@
 class ReservationsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    @reservations = @user.reservations
+    user = User.find(params[:user_id])
+    @reservations = policy_scope(Reservation).where(user: user)
   end
 
   def edit
