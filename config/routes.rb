@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :prestations, only: [:index, :show, :destroy, :create] do
     resources :reservations, only: [:create]
   end
-  
+
   resources :reservations, only: [:index] do
     resources :reviews, only: [:new, :create]
   end

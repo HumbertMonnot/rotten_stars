@@ -1,20 +1,40 @@
 
-<H1>MON TABLEAU DE BORD</H1>
-
-
-<div>
-<h1>MON PROFIL </h1>
-<%= @user.first_name  %>
-<%= @user.last_name  %>
-<%= @user.email  %>
-<%= @user.phone_number %>
+<div class="identity-section row justify-content-md-center">
+      <h1>Mon profil</h1>
+      <br><%= @user.first_name  %>
+          <%= @user.last_name  %>
+      <br><%= @user.email  %>
+      <br><%= @user.phone_number %>
+      <%# <br><%= cl_image_tag @user.avatar.key, width: 200, height: 150, crop: :fill %>
 </div>
 
-<%= link_to "SUIVRE MES RESERVATIONS", user_reservations_path(@user) %>
+<div class="container-dash">
+  <div class="row">
 
-<%= link_to "PRESTATIONS EFFECTUEES ", past_reservations_user_path(@user) %>
+    <div class="col-sm">
+      <div class="card-dash">
+      <div class="card-text">
+        <%= link_to "SUIVRE MES RESERVATIONS", user_reservations_path(@user) %>
+      </div>
+    </div>
+    </div>
 
+     <div class="col-sm">
+      <div class="card-dash">
+        <%= link_to "PRESTATIONS EFFECTUEES ", past_reservations_user_path(@user) %>
+      </div>
+   </div>
 
-<%= link_to "CREER UNE NOUVELLE EXPERIENCE ", new_user_prestation_path(@user) %>
+     <div class="col-sm">
+      <div class="card-dash">
+          <%= link_to "CREER UNE NOUVELLE EXPERIENCE ", new_user_prestation_path(@user) %>
+      </div>
+    </div>
 
- <%= link_to "VOIR TOUTES MES EXPERIENCES", user_prestations_path(@user) %>
+    <div class="col-sm">
+      <div class="card-dash">
+        <%= link_to "VOIR TOUTES MES EXPERIENCES", user_prestations_path(@user) %>
+      </div>
+    </div>
+  </div>
+</div>
