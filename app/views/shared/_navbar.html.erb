@@ -15,23 +15,19 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
 
+
+                <li class="nav-item">
+                  <%= link_to "Dashboard", user_path(current_user), class: "btn btn-success mr-5" %>
+                </li>
+                
           <li class="nav-item dropdown">
                   <% unless current_user.avatar.key.nil? %>
                     <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
-                  <% end %>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                  </div>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to "user_path" do %>
-                    <p class="pr-12">Home</p>
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "user_reservations_path" do %>
-                    <p class="pr-32">Messages</p>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                    </div>
+                  <% else %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-2" %>
                   <% end %>
                 </li>
 
