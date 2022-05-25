@@ -1,0 +1,25 @@
+.ctr-card{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-reservation{
+  height: 30vh;
+  border-radius: 12px;
+  border: solid 3px #61E294;
+  width: 50%;
+  padding: 25px 25px;
+  height: 350px;
+}
+
+.card-comment {
+  border-radius: 12px;
+  border: solid 3px #61E294;
+  width: 35%;
+  padding: 25px 25px;
+}
+
+form input {
+  margin:0;
+  padding: 0;
+}

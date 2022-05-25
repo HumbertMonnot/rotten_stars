@@ -17,7 +17,7 @@
 
           <li class="nav-item dropdown">
                   <% unless current_user.avatar.key.nil? %>
-                    <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
+                    <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <% end %>
                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -25,9 +25,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to "user_path" do %>
+                  <%# <%= link_to user_path(user) do %>
                     <p class="pr-12">Home</p>
-                  <% end %>
+                  <%# <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "user_reservations_path" do %>
