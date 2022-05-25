@@ -1,3 +1,8 @@
+body {
+  flex-direction: column;
+  height: 100vh;
+}
+
 #page-container {
  position: relative;
  min-height: 100vh;
@@ -16,8 +21,8 @@
   bottom: 0;
   width: 100%;
   margin-bottom: 0;
-  position: fixed;
   font-family: 'open sans', sans-serif;
+  flex-shrink: 0;
 }
 
 .footer-links {

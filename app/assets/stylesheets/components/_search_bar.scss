@@ -1,0 +1,27 @@
+.filters{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(255, 192, 203,0.6);
+}
+
+form input {
+  border: none;
+  margin: 24px ;
+  width: 450px;
+  height: 48px;
+  border-radius: 12px;
+  margin-right: 0px;
+}
+
+#search {
+  padding-left: 12px;
+}
+
+form button {
+  border: none;
+  background-color: rgba(255, 192, 203,0);
+  font-size: 16px;
+  &:hover{
+    color: white;
+  }
+}
