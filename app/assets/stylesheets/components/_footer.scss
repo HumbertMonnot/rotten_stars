@@ -1,7 +1,8 @@
 #page-container {
-  position: relative;
-  min-height: 100vh;
-}
+ position: relative;
+ min-height: 100vh;
+ margin-bottom: 100px;
+ }
 
 .footer {
   background-color: #e9eaea;
@@ -12,10 +13,10 @@
   padding: 10px;
   font-size: 12px;
   color: #080808;
-  position: absolute;
   bottom: 0;
   width: 100%;
   margin-bottom: 0;
+  position: fixed;
   font-family: 'open sans', sans-serif;
 }
 
@@ -45,7 +46,6 @@
   justify-content: space-around;
   margin-bottom: 0;
 }
-
 
 
 .footer-links i {

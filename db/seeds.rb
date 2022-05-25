@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 puts "suppression des Reviews"
 Review.destroy_all
@@ -19,7 +20,7 @@ User.destroy_all
 
 puts "creation of users"
 
-20.times do
+10.times do
   User.create(
     email: Faker::Internet.email,
     password: "secret",
@@ -29,9 +30,16 @@ puts "creation of users"
   )
 end
 
+puts "Taking avatars"
+
+User.all.each do |user|
+  file = URI.open('https://i.pravatar.cc/100')
+  user.avatar.attach(io: file, filename: "#{user.first_name}_#{user.last_name}.png", content_type: 'image/png')
+end
+
 puts "creation of prestations"
 
-10.times do
+20.times do
   name = Faker::Artist.name
   category = ["sing", "danse"].sample
   description = Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false)
@@ -52,10 +60,21 @@ puts "creation of prestations"
   presta.save
 end
 
+puts "Taking posters"
+
+dico = {
+  "danse" => "dancer",
+  "sing" => "singer"
+}
+
+Prestation.all.each do |prestation|
+  file = URI.open(Faker::LoremFlickr.image(size: "200x200", search_terms: [dico[prestation.category]]))
+  prestation.poster.attach(io: file, filename: "#{prestation.name}.png", content_type: 'image/png')
+end
 
 puts "creation of reservations"
 
-10.times do
+40.times do
   year = ['2011', '2012', '2013', '2014', '2015', '2016', '2017'].sample
   month = (1..11).to_a.sample
   day = (1..20).to_a.sample
@@ -86,6 +105,6 @@ nb_review.times do
     rating: (1..5).to_a.sample,
     comment: Faker::Lorem.sentence(word_count: (3..6).to_a.sample),
   )
-  review.user = [resa.user, resa.prestation.user].sample 
+  review.user = [resa.user, resa.prestation.user].sample
   review.save
 end
