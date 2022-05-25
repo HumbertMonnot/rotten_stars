@@ -22,12 +22,19 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def new
-    @reservation = Reservation.new
-    @prestation = Prestation.where(params[:id] == :prestation_id)
-  end
+  # def new
+  #   @reservation = Reservation.new
+  #   @prestation = Prestation.find(params[:prestation_id])
+  # end
 
   def create
+    @reservation = Reservation.new(reservations_params)
+    @prestation = Prestation.find(params[:prestation_id])
+    @reservation.prestation = @prestation
+    if @reservation.save
+      # redirect_to user_path(@user) => show de user
+    else
+      render "prestations/show"
   end
 
   private

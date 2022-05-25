@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :prestations, only: [:index, :show]
 
   resources :prestations do
-    resources :reservations, only: [:new, :create]
+    # resources :reservations, only: [:new, :create]
+    resources :reservations, only: [:create]
   end
 
   resources :users, only: [:show] do
