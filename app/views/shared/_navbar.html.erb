@@ -4,7 +4,7 @@
       <h1>Rotten Stars</h1>
     </div>
 
-    <%= image_tag "logo_rotten_stars", class:"center"%>
+    <img src="https://res.cloudinary.com/do3hinac6/image/upload/v1653488114/logo_rotten_stars_tpxx2s.png" class="center" >
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,13 +25,17 @@
                 </li>
 
                 <li class="nav-item">
-                  <%# <%= link_to user_path(user) do %>
-                    <p class="pr-12">Home</p>
-                  <%# <% end %>
+                  <%= link_to "Dashboard", user_path(current_user), class: "btn btn-success mr-5" %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "user_reservations_path" do %>
-                    <p class="pr-32">Messages</p>
+                
+          <li class="nav-item dropdown">
+                  <% unless current_user.avatar.key.nil? %>
+                    <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                    </div>
+                  <% else %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-2" %>
                   <% end %>
                 </li>
 

@@ -6,4 +6,7 @@ class ReservationPolicy < ApplicationPolicy
     end
   end
 
+  def update?
+    record == user
+  end
 end
