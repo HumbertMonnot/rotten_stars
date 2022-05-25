@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!
 
   def index
     @reservations = current_user.reservations
@@ -22,19 +22,20 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # def new
-  #   @reservation = Reservation.new
-  #   @prestation = Prestation.find(params[:prestation_id])
-  # end
-
   def create
-    @reservation = Reservation.new(reservations_params)
     @prestation = Prestation.find(params[:prestation_id])
+    @reservation = Reservation.new(reservations_params)
     @reservation.prestation = @prestation
+    @reservation.user = current_user
+    @reservation.state = "pending"
+    @reservation.price = @prestation.price
+    duration = (@reservation.end_date - @reservation.start_date).to_i / (3600 * 24) + 1
+    @reservation.total = @prestation.price * duration
     if @reservation.save
-      # redirect_to user_path(@user) => show de user
+      redirect_to prestations_path
     else
       render "prestations/show"
+    end
   end
 
   private

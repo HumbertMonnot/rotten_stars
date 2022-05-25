@@ -12,41 +12,35 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%# <% if user_signed_in? %>
-          <%# <li class="nav-item active"> %>
+        <% if user_signed_in? %>
+          <li class="nav-item active">
 
     <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "#" do %>
-                <p class= "dropdown-item">Action</p>
-              <% end %>
-              <%= link_to "#" do %>
-                <p class= "dropdown-item">Another action</p>
-              <% end %>
-              <%# <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
 
           <li class="nav-item">
-            <%= link_to "#" do %>
+            <%= link_to "user_path" do %>
               <p class="pr-12">Home</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "#" do %>
+            <%= link_to "user_reservations_path" do %>
               <p class="pr-32">Messages</p>
             <% end %>
           </li>
 
-        <%# <% else %>
+        <% else %>
           <li class="nav-item">
-            <%= link_to "#" do %>
-            <%# new_user_session_path %>
+            <%= link_to "users/sign_in" do %>
+            <% new_user_session_path %>
             <p class="pr-32">Connexion</p>
             <% end %>
           </li>
-        <%# <% end %>
+        <% end %>
       </ul>
     </div>
   </div>

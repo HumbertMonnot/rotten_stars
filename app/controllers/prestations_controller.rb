@@ -7,5 +7,6 @@ class PrestationsController < ApplicationController
 
   def show
     @prestation = Prestation.find(params[:id])
+    @reservation = Reservation.new
   end
 end
