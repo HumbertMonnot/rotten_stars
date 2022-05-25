@@ -25,9 +25,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to "Dashboard", user_path(current_user), class: "btn btn-success mr-5" %>
+                  <%= link_to "Dashboard", user_path(current_user), class: "btn" %>
                 </li>
-                
+
           <li class="nav-item dropdown">
                   <% unless current_user.avatar.key.nil? %>
                     <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
