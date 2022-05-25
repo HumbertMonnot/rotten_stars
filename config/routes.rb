@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'prestations#home'
 
-  resources :prestations, only: [:index, :show, :new, :destroy, :create] do
+  resources :prestations, only: [:index, :show, :destroy, :create] do
     resources :reservations, only: [:create]
   end
-  
+
   resources :reservations, only: [:index] do
     resources :reviews, only: [:new, :create]
   end
