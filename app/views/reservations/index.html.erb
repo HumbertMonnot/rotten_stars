@@ -1,15 +1,19 @@
 
 <% @reservations.each do |reservation| %>
-  <p><%= reservation.prestation.name %></p>
-  <p><%= reservation.user.first_name %></p>
-  <p><%= reservation.total %></p> 
-  <% if reservation.state == "pending" %>
-    <%= simple_form_for [@user, reservation]  do |f| %>
-      <%= f.input :state, collection: ["accepted", "rejected"] %>
-      <%= f.button :submit %>
-    <% end %>
-  <% else %>
-    <p><%= reservation.state %></p>
-  <% end %>
+  <div class = "card-product">
+    <%= cl_image_tag reservation.prestation.poster.key %>
+    <div class="card-product-infos">
+      <h2><%= reservation.prestation.name %></h2>
+      <p><%= reservation.total %></p> 
+      <% if reservation.state == "pending" %>
+        <%= simple_form_for [@user, reservation]  do |f| %>
+          <%= f.button :submit, name: "state", value: "accepted", class:"btn btn-success"%>
+          <%= f.button :submit, name: "state", value: "rejected", class:"btn btn-warning"%>
+        <% end %>
+      <% else %>
+        <p><%= reservation.state.upcase %></p>
+      <% end %>
+    </div>
+  </div>
   <br>
 <% end %>

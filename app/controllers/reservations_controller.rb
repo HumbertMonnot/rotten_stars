@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @user = User.find(params[:user_id])
-    @reservation.update(state: params[:reservation][:state])
+    @reservation.update(state: params[:state])
     if @reservation.save
       redirect_to user_reservations_path(@user)
     else

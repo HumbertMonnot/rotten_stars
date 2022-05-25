@@ -60,6 +60,17 @@ puts "creation of prestations"
   presta.save
 end
 
+puts "Taking posters"
+
+dico = {
+  "danse" => "dancer",
+  "sing" => "singer"
+}
+
+Prestation.all.each do |prestation|
+  file = URI.open(Faker::LoremFlickr.image(size: "200x200", search_terms: [dico[prestation.category]]))
+  prestation.poster.attach(io: file, filename: "#{prestation.name}.png", content_type: 'image/png')
+end
 
 puts "creation of reservations"
 
