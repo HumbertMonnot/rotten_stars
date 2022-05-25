@@ -1,5 +1,6 @@
 class Prestation < ApplicationRecord
   belongs_to :user
+  has_many :reservations
   has_one_attached :poster
 
   validates :name, presence: true
