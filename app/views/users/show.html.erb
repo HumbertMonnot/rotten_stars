@@ -1,0 +1,20 @@
+
+<H1>MON TABLEAU DE BORD</H1>
+
+
+<div>
+<h1>MON PROFIL </h1>
+<%= @user.first_name  %>
+<%= @user.last_name  %>
+<%= @user.email  %>
+<%= @user.phone_number %>
+</div>
+
+<%= link_to "SUIVRE MES RESERVATIONS", user_reservations_path(@user) %>
+
+<%= link_to "PRESTATIONS EFFECTUEES ", past_reservations_user_path(@user) %>
+
+
+<%= link_to "CREER UNE NOUVELLE EXPERIENCE ", new_prestation_path %>
+
+ <%= link_to "VOIR TOUTES MES EXPERIENCES", user_prestations_path(@user) %>

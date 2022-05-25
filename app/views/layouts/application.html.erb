@@ -15,15 +15,11 @@
   <body>
     <%= render 'shared/navbar' %>
 
-   <div id="page-container">
-    <div id="content" class="container mt-5">
+    <div id="content">
         <%= yield %>
     </div>
 
-    <div>
-      <%= render 'shared/footer' %>
-    </div>
-  </div>
+    <%# <%= render 'shared/footer' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </body>

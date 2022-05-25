@@ -1,5 +1,6 @@
 class Prestation < ApplicationRecord
   belongs_to :user
+  has_many :reservations
   has_one_attached :poster
 
   validates :name, presence: true
@@ -8,5 +9,5 @@ class Prestation < ApplicationRecord
   validates :price, numericality: true
   validates :address, presence: true
   validates :distance, numericality: true
-  validates :punchline, presence: true
+  validates :punchline, presence: true, length: { in: 5..30 }
 end
