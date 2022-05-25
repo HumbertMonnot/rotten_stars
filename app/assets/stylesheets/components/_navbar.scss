@@ -10,7 +10,7 @@
 }
 
 .navbar-lewagon img {
-  width: 200px;
+  width: 300px;
 }
 
 .center {
@@ -30,16 +30,18 @@ h1{
   padding: 16px;
 }
 
-a {
+.navbar-lewagon a {
   text-decoration: none;
+  color: black
 }
 
-a p:hover {
+
+.navbar-lewagon a p:hover {
   text-decoration: underline #61E294 5px;
   text-underline-offset: 3px;
 }
 
-p{
+.navbar-lewagon p {
   color: black;
   font-family: 'Open Sans', sans-serif;
   padding-top: 18px;

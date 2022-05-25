@@ -3,10 +3,10 @@ body {
   height: 100vh;
 }
 
-#page-container {
+.page-container {
  position: relative;
  min-height: 100vh;
- margin-bottom: 100px;
+ display: flex
  }
 
 .footer {
@@ -23,7 +23,11 @@ body {
   margin-bottom: 0;
   font-family: 'open sans', sans-serif;
   flex-shrink: 0;
+  position: absolute;
+  bottom: 0;
+  margin-top: 100px;
 }
+
 
 .footer-links {
   display: flex;
