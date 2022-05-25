@@ -3,7 +3,8 @@ class ReservationsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @reservations = policy_scope(Reservation)
-    @reservations = @reservations.map { |resa| resa.prestation}.select { |presta| presta.user == current_user } 
+    @reservations_received= @reservations.select { |resa| resa.prestation.user == current_user }
+    @reservations_launched = @reservations.select { |resa| resa.user == current_user }
   end
 
   def edit
@@ -15,13 +16,13 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @user = @reservation.prestation.user
-    authorize(@user)
     @reservation.update(state: params[:state])
     if @reservation.save
       redirect_to user_reservations_path(@user)
     else
       render :edit
     end
+    authorize(@user)
   end
 
   def create
