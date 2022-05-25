@@ -25,18 +25,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to "Dashboard", user_path(current_user), class: "btn" %>
-                </li>
-
-          <li class="nav-item dropdown">
-                  <% unless current_user.avatar.key.nil? %>
-                    <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                    </div>
-                  <% else %>
-                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-2" %>
-                  <% end %>
+                  <%= link_to "Dashboard", user_path(current_user), class: "btn mr-32px" %>
                 </li>
 
         <% else %>
