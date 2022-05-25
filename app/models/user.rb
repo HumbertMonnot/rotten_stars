@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :prestations, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :prestations, through: :reservations
+  has_one_attached :avatar
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -11,6 +12,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :phone_number, presence: true, format: { 
     with: /(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})/,
-    message: "please enter keywords in correct format"
+    message: "Please enter Phone number in correct format"
   }
 end

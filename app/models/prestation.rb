@@ -1,5 +1,6 @@
 class Prestation < ApplicationRecord
   belongs_to :user
+  has_one_attached :poster
 
   validates :name, presence: true
   validates :category, inclusion: { in: ['sing', 'danse'] }

@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = current_user.reservations
-    @user = current_user
+    @user = User.find(params[:user_id])
+    @reservations = @user.reservations
   end
 
   def edit
@@ -11,8 +11,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @user = User.find(params[:user_id])
-    raise
-    @reservation.update(reservations_params)
+    @reservation.update(state: params[:state])
     if @reservation.save
       redirect_to user_reservations_path(@user)
     else
