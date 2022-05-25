@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservations_params)
     @reservation.prestation = @prestation
     @reservation.user = current_user
+    authorize(current_user)
     @reservation.state = "pending"
     @reservation.price = @prestation.price
     duration = (@reservation.end_date - @reservation.start_date).to_i / (3600 * 24) + 1
