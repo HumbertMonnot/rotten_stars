@@ -86,6 +86,6 @@ nb_review.times do
     rating: (1..5).to_a.sample,
     comment: Faker::Lorem.sentence(word_count: (3..6).to_a.sample),
   )
-  review.user = [resa.user, resa.prestation.user].sample 
+  review.user = [resa.user, resa.prestation.user].sample
   review.save
 end

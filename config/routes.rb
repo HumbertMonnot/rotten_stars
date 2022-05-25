@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :reservations, only: [:index, :edit, :update]
-    resources :reviews, only: [:index, :new, :create]
+  end
+  resources :reservations, only: [:index] do
+    resources :reviews, only: [:new, :create]
   end
 end
