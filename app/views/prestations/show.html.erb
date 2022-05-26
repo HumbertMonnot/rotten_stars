@@ -1,9 +1,12 @@
 <div class="container">
 
   <div class="text-description">
-    <h1><%= link_to :root do %>
-      <i class="fa-solid fa-angles-left"></i>
-      <% end %><%= @prestation.name %></h1>
+    <div id="retour">
+      <%= link_to :root do %>
+        <i class="fa-solid fa-circle-chevron-left"></i>Retour
+      <% end %>
+      <h1 class="pl-32 pt-32"><%= @prestation.name %></h1>
+    </div>
     <h2><%= @prestation.category %></h2>
     <h3><%= @prestation.address %></h3>
 
@@ -25,6 +28,16 @@
         <%= f.input :end_date, as: :date, html5: true %>
         <%= f.button :submit, "Réserver", class: 'btn fr w-45 mb-32px' %>
     <% end %>
+    <h3><% if @reservation.start_date == nil || @reservation.end_date == nil %>
+      <p>Total: 0€</p>
+      <% else %>
+        <% duration = (@reservation.end_date - @reservation.start_date).to_i / (3600 * 24) + 1 %>
+        <% reservation_total = @prestation.price * duration %>
+        <%= "Total: #{reservation_total}€" %>
+      <% end %>
+
+
+
   </div>
 
 
