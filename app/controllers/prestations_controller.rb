@@ -9,11 +9,20 @@ class PrestationsController < ApplicationController
 
   def home
     @prestations = Prestation.all
+    @dico = {}
+    @prestations.each do |presta|
+      @dico[presta.id] = presta.polygon
+    end
     authorize(@prestations)
   end
 
   def show
     @reservation = Reservation.new
+    @info_array =[{
+                    lat: @prestation.latitude,
+                    lng: @prestation.longitude
+                  },
+                @prestation.distance]
     authorize(@prestation)
     @average = average(@prestation)
   end
