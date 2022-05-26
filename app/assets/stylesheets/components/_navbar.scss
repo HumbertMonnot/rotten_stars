@@ -55,14 +55,6 @@ h1{
   margin-right: 24px;
 }
 
-.pr-12{
-  padding-right: 12px;
-}
-
-.pr-32{
-  padding-right: 32px;
-}
-
 .dropdown-menu {
   border-radius: 5px;
 }
@@ -71,9 +63,23 @@ h1{
   background-color: white;
 }
 
-
 @media (max-width: 700px) {
+  .navbar-lewagon img {
+    width: 150px;
+  }
+  h1{
+    font-size: 14px;
+  }
+  .navbar-lewagon{
+    padding: 0 24px;
+  }
   #navbarSupportedContent #navbarDropdown {
     display: none;
+  }
+
+  a.btn{
+    float: right;
+    font-size: 14px;
+    padding: 5px 5px;
   }
 }
