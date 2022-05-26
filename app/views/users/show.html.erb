@@ -1,60 +1,52 @@
 <div class="container-dash">
-  <div class="identity-section row justify-content-md-center">
-        <h1>Mon profil</h1>
-        <br><%= @user.first_name  %>
-            <%= @user.last_name  %>
-        <br><%= @user.email  %>
-        <br><%= @user.phone_number %>
-        <%# <br><%= cl_image_tag @user.avatar.key, width: 200, height: 150, crop: :fill %>
-  </div>
-</div>
-
-<div class="container-dash">
-  <div class="row">
-
-    <div class="col-sm">
-      <div class="card-dash">
-        <div class="card-text">
-          <%= link_to "SUIVRE MES RESERVATIONS", user_reservations_path(@user) %>
+   <div class="container-identity-section">
+          <h1>Mon profil</h1>
+        <div>
+          <p></p><br><%= cl_image_tag @user.avatar.key %>
         </div>
-      </div>
+
+        <div>
+          <br><%= @user.first_name  %>
+              <%= @user.last_name  %>
+          <br><%= @user.email  %>
+          <br><%= @user.phone_number %><p>
+        </div>
+
+  </div>
+
+  <div class="container-block">
+    <div class="card_actions">
+      <%= link_to "Suivre mes réservations", user_reservations_path(@user) %>
     </div>
 
-    <div class="col-sm">
-      <div class="card-dash">
-        <%= link_to "PRESTATIONS EFFECTUEES ", past_reservations_user_path(@user) %>
-      </div>
+    <div class="card_actions">
+      <%= link_to "Voir mes dernières réservations", past_reservations_user_path(@user) %>
     </div>
+    
+     <div class="card_actions">
+      <%= link_to "Créer une nouvelle expérience", new_user_prestation_path(@user) %>
+     </div>
 
-    <div class="col-sm">
-      <div class="card-dash">
-          <%= link_to "CREER UNE NOUVELLE EXPERIENCE ", new_user_prestation_path(@user) %>
-      </div>
-    </div>
-
-    <div class="col-sm">
-      <div class="card-dash">
-        <%= link_to "VOIR TOUTES MES EXPERIENCES", user_prestations_path(@user) %>
-      </div>
+    <div class="card_actions">
+      <%= link_to "Voir toutes mes expériences", user_prestations_path(@user) %>
     </div>
   </div>
-</div>
-
-<div class="container-dash-message">
-  <div class="titre-my-message">
-  <h2>My message</h2>
+  
+<div class="container-dash-comment">
+  <div class="titre-my-comment">
+  <h2>Mes commentaires postés</h2>
   </div>
   <% @user.reservations.each do |reservation| %>
-  <div class="col-sm card-message">
+  <div class="col-sm card-my-comment">
     <div class="card-dash-prestation-name">
       <%= reservation.prestation.name %>
     </div>
     <% reservation.reviews.each do |review| %>
-    <div class="card-dash-prestation-message">
+    <div class="card-dash-prestation-comment">
       <%= review.comment %>
+    
     </div>
     <% end %>
-  </div>
-
+    </div>
   <% end %>
 </div>

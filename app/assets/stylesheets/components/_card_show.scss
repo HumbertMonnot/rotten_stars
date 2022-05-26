@@ -20,6 +20,23 @@
   padding: 25px 25px;
 }
 
+.card-comment-title {
+  font-weight: 500;
+  border-bottom: solid #61E294;
+}
+
+.card-comment-name {
+  width: fit-content;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: inset 0 -.5em 0 #61E294;
+}
+
+.card-comment-p {
+  font-weight: 300;
+  font-size: 12px;
+}
+
 form input {
   margin:0;
   padding: 0;

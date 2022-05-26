@@ -5,9 +5,16 @@
         <i class="fa-solid fa-circle-chevron-left"></i>Retour
       <% end %>
       <h1 class="pl-32"><%= @prestation.name %></h1>
+      <div class="poop-scale">
+        <% @average.times do  %>
+          <i class="fa-solid fa-poo"></i>
+        <% end %>
+        <% (5 - @average).times do  %>
+         <i class="fa-solid fa-poop"></i>
+        <% end %>
+      </div>
     </div>
     <h2><%= @prestation.category.capitalize %></h2>
-    <h3><%= @prestation.address %></h3>
   </div>
 
   <div class="img-prestation">
@@ -28,13 +35,17 @@
       <p>Total : <span id="reservation-total">0</span>€</p>
     </div>
 
+  <div>
+   <p><%= @average %> / 5</p>
+  </div>
+
 
   <div class="card-comment">
     <h2 class="card-comment-title">Comment :</h2>
       <% @prestation.reservations.each do |reservation|%>
         <h3 class="card-comment-name"><%= reservation.user.first_name %>, <%= reservation.user.last_name %></h3>
         <% reservation.reviews.each do |review| %>
-          <p><%= review.comment %></p>
+          <p class="card-comment-p"><%= review.comment %></p>
         <% end %>
       <% end %>
   </div>
