@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/position";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -13,6 +14,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
 
 // Google font
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');

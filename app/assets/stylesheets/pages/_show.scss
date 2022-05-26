@@ -1,6 +1,6 @@
-.container {
-  width: 100%;
-}
+// .container {
+//   width: 100%;
+// }
 
 .img-prestation {
   display: flex;
@@ -17,14 +17,22 @@
     }
 }
 
-
-i{
+.text-description a{
+  text-decoration: none;
   color: black;
+  font-family: "source sans pro", sans-serif;
+  font-size: 14px;
+  float: right;
+  i{
+    color: black;
+  }
+}
+
+a{
+  text-decoration: none;
 }
 
 .text-description h1{
-  padding-left: 0;
-  padding-top: 32px;
   margin-bottom: 0px;
 }
 

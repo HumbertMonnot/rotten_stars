@@ -3,13 +3,13 @@ body {
   height: 100vh;
 }
 
+#content-yield{
+  margin-bottom: 100px;
+}
+
 #content {
   position: relative;
   min-height: 100vh;
- }
-
- #content-yield{
-   margin-bottom: 100px;
  }
 
 .footer {
@@ -24,9 +24,7 @@ body {
   bottom: 0;
   width: 100%;
   font-family: 'open sans', sans-serif;
-  position: absolute;
 }
-
 
 .footer-links {
   display: flex;
@@ -86,4 +84,9 @@ body {
 .footer-links a {
   font-size: 10px;
 }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> master

@@ -23,5 +23,19 @@ class Prestation < ApplicationRecord
     request = URI.open(url).read
     response = JSON.parse(request)
     return response["features"][0]["geometry"]["coordinates"][0]
+
+  def average
+    average = []
+    self.reservations.each do |reservation|
+      reservation.reviews.each do |review|
+        average << review.rating
+      end
+    end
+    if average.size.positive?
+      final_average = average.sum / average.size
+      return final_average
+    end
+    return "No rating yet !"
+
   end
 end
