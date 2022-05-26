@@ -1,27 +1,15 @@
 <div class="filters">
-  <form action="/prestations">
+  <form action="/">
     <label for="search"></label>
-    <input type="text" id="search" placeholder="Votre recherche">
+    <input type="text" id="search" placeholder="Votre adresse" name="address" >
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>
 
-<div id="text-home">
-  <h2>Dernières prestations</h2>
-</div>
 
-<div class="ctr-cards">
-<% @prestations.limit(10).each do |prestation| %>
+   <% if params[:address].present? %>
+      <%= render 'shared/filter' %>
+   <%  else%>
+     <%= render 'shared/newestprestations' %>
+   <%  end%>
 
-    <%= link_to prestation_path(prestation) do %>
-    <div class="card-prestation">
-      <%= cl_image_tag prestation.poster.key,height: 200, width: 200%>
-        <div class="text-prestation">
-          <h2><%=  prestation.name %></h2>
-          <h3><%=  prestation.punchline %></h3>
-          <h3><%=  "#{prestation.price}€"%></h3>
-        </div>
-      </div>
-  <% end %>
-<% end  %>
-</div>

@@ -5,7 +5,9 @@
       <h2><%= reservation.prestation.name %></h2>
       <p><%= reservation.total %></p>
     </div>
-    <%= link_to 'Comment', new_reservation_review_path(reservation) %>
+    <%= link_to new_reservation_review_path(reservation) do %>
+      <i class="fa-solid fa-message input-comment"></i>
+    <% end %>
   </div>
   <br>
 <% end %>

@@ -3,7 +3,6 @@ const start_date = document.getElementById("reservation_start_date")
 const prestation = document.getElementById("prestation-price")
 const total = document.getElementById("reservation-total")
 
-
 if (end_date) {
   end_date.addEventListener("input", () => {
     duration = (Date.parse(end_date.value) - Date.parse(start_date.value)) / (1000 * 3600 * 24);

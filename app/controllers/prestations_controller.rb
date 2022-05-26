@@ -9,12 +9,22 @@ class PrestationsController < ApplicationController
 
   def home
     @prestations = Prestation.all
+    @dico = {}
+    @prestations.each do |presta|
+      @dico[presta.id] = presta.polygon
+    end
     authorize(@prestations)
   end
 
   def show
     @reservation = Reservation.new
+    @info_array =[{
+                    lat: @prestation.latitude,
+                    lng: @prestation.longitude
+                  },
+                @prestation.distance]
     authorize(@prestation)
+    @average = average(@prestation)
   end
 
   def new
@@ -39,6 +49,9 @@ class PrestationsController < ApplicationController
     redirect_to user_prestations_path(@prestation.user)
   end
 
+
+
+
   private
 
   def set_prestation
@@ -47,5 +60,19 @@ class PrestationsController < ApplicationController
 
   def prestation_params
     params.require(:prestation).permit(:name, :category, :description, :price, :address, :distance, :punchline)
+  end
+
+  def average(prestation)
+    average = []
+    prestation.reservations.each do |reservation|
+      reservation.reviews.each do |review|
+        average << review.rating
+      end
+    end
+    if average.size.positive?
+      final_average = average.sum / average.size
+      return final_average
+    end
+    return "No rating yet !"
   end
 end
