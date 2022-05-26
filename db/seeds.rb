@@ -9,6 +9,8 @@
 require 'faker'
 require "open-uri"
 
+address_list = %w(merignac pessac talence bordeaux begles cenon lormont eysines gradignan canéjan bouliac tresses yvrac latresne léognan cestas cadaujac)
+
 puts "suppression des Reviews"
 Review.destroy_all
 puts "suppression des Reservations"
@@ -44,7 +46,7 @@ puts "creation of prestations"
   category = ["sing", "danse"].sample
   description = Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false)
   price = (50..3000).to_a.sample
-  address = Faker::Address.full_address
+  address = address_list.sample
   punchline = Faker::Lorem.sentence(word_count: 3)
   user = User.all.sample
   presta = Prestation.new(
@@ -53,7 +55,7 @@ puts "creation of prestations"
     description: description,
     price: price,
     address: address,
-    distance: (100..1000).to_a.sample,
+    distance: (30...60).to_a.sample,
     punchline: punchline,
   )
   presta.user = user
