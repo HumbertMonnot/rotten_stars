@@ -3,11 +3,17 @@
   <div class="text-description">
     <h1><%= link_to :root do %>
       <i class="fa-solid fa-angles-left"></i>
+
+      <% end %><%= @prestation.name %></h1>
+    <div class="poop-scale">
+      <% @average.times do  %>
+        <i class="fa-solid fa-poo"></i>
       <% end %>
-      <%= link_to prestation_path(@user) do %>
-      <%= @prestation.name %>
+      <% (5 - @average).times do  %>
+       <i class="fa-solid fa-poop"></i>
       <% end %>
-    </h1>
+    </div>
+
     <h2><%= @prestation.category %></h2>
     <h3><%= @prestation.address %></h3>
 
@@ -31,13 +37,17 @@
     <% end %>
   </div>
 
+  <div>
+   <p><%= @average %> / 5</p>
+  </div>
+
 
   <div class="card-comment">
     <h2 class="card-comment-title">Comment :</h2>
       <% @prestation.reservations.each do |reservation|%>
         <h3 class="card-comment-name"><%= reservation.user.first_name %>, <%= reservation.user.last_name %></h3>
         <% reservation.reviews.each do |review| %>
-          <p><%= review.comment %></p>
+          <p class="card-comment-p"><%= review.comment %></p>
         <% end %>
       <% end %>
   </div>

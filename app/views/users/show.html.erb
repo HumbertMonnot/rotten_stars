@@ -22,15 +22,31 @@
     <div class="card_actions">
       <%= link_to "Voir mes dernières réservations", past_reservations_user_path(@user) %>
     </div>
-
-    <div class="card_actions">
+    
+     <div class="card_actions">
       <%= link_to "Créer une nouvelle expérience", new_user_prestation_path(@user) %>
-    </div>
+     </div>
 
     <div class="card_actions">
       <%= link_to "Voir toutes mes expériences", user_prestations_path(@user) %>
     </div>
-
   </div>
-
+  
+<div class="container-dash-comment">
+  <div class="titre-my-comment">
+  <h2>Mes commentaires postés</h2>
+  </div>
+  <% @user.reservations.each do |reservation| %>
+  <div class="col-sm card-my-comment">
+    <div class="card-dash-prestation-name">
+      <%= reservation.prestation.name %>
+    </div>
+    <% reservation.reviews.each do |review| %>
+    <div class="card-dash-prestation-comment">
+      <%= review.comment %>
+    
+    </div>
+    <% end %>
+    </div>
+  <% end %>
 </div>

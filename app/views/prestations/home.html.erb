@@ -12,8 +12,7 @@
 
 <div class="ctr-cards">
 <% @prestations.limit(10).each do |prestation| %>
-
-    <%= link_to prestation_path(prestation) do %>
+  <%= link_to prestation_path(prestation) do %>
     <div class="card-prestation">
       <%= cl_image_tag prestation.poster.key,height: 200, width: 200%>
         <div class="text-prestation">
@@ -21,7 +20,19 @@
           <h3><%=  prestation.punchline %></h3>
           <h3><%=  "#{prestation.price}€"%></h3>
         </div>
-      </div>
+        <div class="poop-scale">
+          <% if prestation.average != "No rating yet !" %>
+            <% prestation.average.times do  %>
+              <i class="fa-solid fa-poo"></i>
+            <% end %>
+            <% (5 - prestation.average).times do  %>
+              <i class="fa-solid fa-poop"></i>
+            <% end %>
+          <% else %>
+            <%= prestation.average  %>
+          <% end %>
+        </div>
+    </div>
   <% end %>
 <% end  %>
 </div>
