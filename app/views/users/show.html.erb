@@ -1,17 +1,19 @@
 <div class="container-dash">
-  <div class="identity-section row justify-content-md-center">
-        <h1>Mon profil</h1>
-        <br><%= @user.first_name  %>
-            <%= @user.last_name  %>
-        <br><%= @user.email  %>
-        <br><%= @user.phone_number %>
-        <%# <br><%= cl_image_tag @user.avatar.key, width: 200, height: 150, crop: :fill %>
+  <div class="container-block">
+    <div class="identity-section row justify-content-md-center">
+          <h1>Mon profil</h1>
+          <br><%= @user.first_name  %>
+              <%= @user.last_name  %>
+          <br><%= @user.email  %>
+          <br><%= @user.phone_number %>
+          <%# <br><%= cl_image_tag @user.avatar.key, width: 200, height: 150, crop: :fill %>
+    </div>
   </div>
 </div>
 
 <div class="container-dash">
   <div class="row">
-
+  <div class="container-block">
     <div class="col-sm">
       <div class="card-dash">
       <div class="card-text">
@@ -37,5 +39,6 @@
         <%= link_to "VOIR TOUTES MES EXPERIENCES", user_prestations_path(@user) %>
       </div>
     </div>
+  </div>
   </div>
 </div>
