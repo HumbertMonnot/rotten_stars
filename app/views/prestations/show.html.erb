@@ -4,7 +4,7 @@
     <h1><%= link_to :root do %>
       <i class="fa-solid fa-angles-left"></i>
       <% end %>
-      <%= link_to prestation_path(@user) do %>
+      <%= link_to user_prestations_path do %>
       <%= @prestation.name %>
       <% end %>
     </h1>
