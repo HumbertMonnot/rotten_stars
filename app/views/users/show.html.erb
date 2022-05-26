@@ -14,19 +14,19 @@
 
     <div class="col-sm">
       <div class="card-dash">
-      <div class="card-text">
-        <%= link_to "SUIVRE MES RESERVATIONS", user_reservations_path(@user) %>
+        <div class="card-text">
+          <%= link_to "SUIVRE MES RESERVATIONS", user_reservations_path(@user) %>
+        </div>
       </div>
     </div>
-    </div>
 
-     <div class="col-sm">
+    <div class="col-sm">
       <div class="card-dash">
         <%= link_to "PRESTATIONS EFFECTUEES ", past_reservations_user_path(@user) %>
       </div>
-   </div>
+    </div>
 
-     <div class="col-sm">
+    <div class="col-sm">
       <div class="card-dash">
           <%= link_to "CREER UNE NOUVELLE EXPERIENCE ", new_user_prestation_path(@user) %>
       </div>
@@ -38,4 +38,23 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container-dash-message">
+  <div class="titre-my-message">
+  <h2>My message</h2>
+  </div>
+  <% @user.reservations.each do |reservation| %>
+  <div class="col-sm card-message">
+    <div class="card-dash-prestation-name">
+      <%= reservation.prestation.name %>
+    </div>
+    <% reservation.reviews.each do |review| %>
+    <div class="card-dash-prestation-message">
+      <%= review.comment %>
+    </div>
+    <% end %>
+  </div>
+
+  <% end %>
 </div>

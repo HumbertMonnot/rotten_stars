@@ -1,8 +1,15 @@
-
-
-<%= simple_form_for [ @reservation, @review ] do |f| %>
-  <h2><%= @reservation.prestation.name %></h2>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6 m-auto">
+      <h1> Propose ton expérience! </h1>
+      <div class="card-create-prestation">
+        <%= simple_form_for [ @reservation, @review ] do |f| %>
+          <h2><%= @reservation.prestation.name %></h2>
+          <%= f.input :comment %>
+          <%= f.input :rating %>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

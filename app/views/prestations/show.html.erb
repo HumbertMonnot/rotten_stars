@@ -1,10 +1,12 @@
 <div class="container">
+
   <div class="text-description">
     <h1><%= link_to :root do %>
       <i class="fa-solid fa-angles-left"></i>
       <% end %><%= @prestation.name %></h1>
     <h2><%= @prestation.category %></h2>
     <h3><%= @prestation.address %></h3>
+
   </div>
 
 <div class="img-prestation">
@@ -30,10 +32,8 @@
     <h2 class="card-comment-title">Comment :</h2>
       <% @prestation.reservations.each do |reservation|%>
         <h3 class="card-comment-name"><%= reservation.user.first_name %>, <%= reservation.user.last_name %></h3>
-      <% end %>
-      <% @prestation.reservations.each do |reservation| %>
         <% reservation.reviews.each do |review| %>
-          <p class="card-comment-comment"><%= review.comment %></p>
+          <p><%= review.comment %></p>
         <% end %>
       <% end %>
   </div>

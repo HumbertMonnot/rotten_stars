@@ -16,7 +16,7 @@ class PrestationsController < ApplicationController
     @reservation = Reservation.new
     authorize(@prestation)
   end
-  
+
   def new
     @prestation = Prestation.new
     @user = User.find(params[:user_id])
