@@ -1,15 +1,32 @@
 <h2>Prestations</h2>
 
-<% @prestations.each do |prestation| %>
-  <div class = "card-product">
-    <% unless prestation.poster.key.nil? %>
-      <%= cl_image_tag prestation.poster.key %>
-    <% end %>
-    <div class="card-product-infos">
-      <h2><%= prestation.name %></h2>
-      <p><%= prestation.category %></p> 
-      <p><%= prestation.price %> € par jour de prestation</p>
+<div>
+  <% @prestations.each do |prestation| %>
+    <div class = "card-product">
+      <% unless prestation.poster.key.nil? %>
+        <%= cl_image_tag prestation.poster.key %>
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= prestation.name %></h2>
+        <p><%= prestation.category %></p>
+        <p><%= prestation.price %> € par jour de prestation</p>
+      </div>
     </div>
-  </div>
-  <br>
-<% end %>
+  <% end %>
+  <% @prestations.each do | prestation | %>
+    <% prestation.reservations.each do | reservation | %>
+      <% reservation.reviews.each do | review | %>
+        <div>
+          <% if review.rating %>
+            <div>
+              <p><%= review.rating %><i class="fa-solid fa-poo rotten-stars-pink"></i></p>
+            </div>
+            <div>
+              <%= review.comment %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
