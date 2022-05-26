@@ -6,15 +6,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  img{
-  object-fit: cover;
-  object-position: center;
-  margin: 25px 25px;
-  border-radius: 12px;
-}
-  .p-prestation {
-    width: 40%
-  }
+    img{
+    object-fit: cover;
+    object-position: center;
+    margin: 25px 25px;
+    border-radius: 12px;
+    }
+    .p-prestation {
+      width: 100%
+    }
 }
 
 

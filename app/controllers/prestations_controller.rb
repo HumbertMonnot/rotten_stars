@@ -14,6 +14,11 @@ class PrestationsController < ApplicationController
 
   def show
     @reservation = Reservation.new
+    @info_array =[{
+                    lat: @prestation.latitude,
+                    lng: @prestation.longitude
+                  },
+                @prestation.distance]
     authorize(@prestation)
   end
   

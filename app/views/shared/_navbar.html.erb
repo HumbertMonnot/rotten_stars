@@ -33,10 +33,7 @@
         <% else %>
         
           <li class="nav-item">
-            <%= link_to "users/sign_in" do %>
-            <% new_user_session_path %>
-            <p class="pr-32">Connexion</p>
-            <% end %>
+            <%= link_to "Connexion", new_user_session_path, class: "btn mr-32" %>
           </li>
         
         <% end %>
