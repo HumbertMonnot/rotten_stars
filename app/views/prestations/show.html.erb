@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <%= link_to prestations_path do %>
+    <%= link_to :root do %>
       Retour
     <% end %>
   </div>
@@ -33,10 +33,8 @@
     <h2 class="card-comment-title">Comment :</h2>
       <% @prestation.reservations.each do |reservation|%>
         <h3 class="card-comment-name"><%= reservation.user.first_name %>, <%= reservation.user.last_name %></h3>
-      <% end %>
-      <% @prestation.reservations.each do |reservation| %>
         <% reservation.reviews.each do |review| %>
-          <p class="card-comment-comment"><%= review.comment %></p>
+          <p><%= review.comment %></p>
         <% end %>
       <% end %>
   </div>
