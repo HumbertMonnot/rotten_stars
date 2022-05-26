@@ -64,7 +64,22 @@ h1{
 }
 
 @media (max-width: 700px) {
+  .navbar-lewagon img {
+    width: 150px;
+  }
+  h1{
+    font-size: 14px;
+  }
+  .navbar-lewagon{
+    padding: 0 24px;
+  }
   #navbarSupportedContent #navbarDropdown {
     display: none;
+  }
+
+  a.btn{
+    float: right;
+    font-size: 14px;
+    padding: 5px 5px;
   }
 }
