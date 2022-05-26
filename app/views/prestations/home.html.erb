@@ -1,15 +1,27 @@
 <div class="filters">
-  <form action="/">
+<%= form_tag :root, id:"checkboxes", method: :get do %>
+<div class="checkbox">
+   <%= label_tag('chante') %>
+   <%= check_box_tag('category_sing', "sing") %>
+   </div>
+   <div class="checkbox">
+   <%= label_tag('danse') %>
+   <%= check_box_tag('category_danse', "danse") %>
+    </div>
+    <div class="checkbox">
+   <%= submit_tag "Rechercher", class:"btn w-150" %>
+   </div>
+ <% end %>
+
+  <form action="/", class = "m-25">
     <label for="search"></label>
     <input type="text" id="search" placeholder="Votre adresse" name="address" >
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>
 
-
    <% if params[:address].present? %>
       <%= render 'shared/filter' %>
    <%  else%>
      <%= render 'shared/newestprestations' %>
    <%  end%>
-

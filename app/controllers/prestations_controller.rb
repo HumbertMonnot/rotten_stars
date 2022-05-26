@@ -5,6 +5,7 @@ class PrestationsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @prestations = policy_scope(Prestation).where(user: @user)
+    @prestation = Prestation.find_by("category")
   end
 
   def home
@@ -14,6 +15,14 @@ class PrestationsController < ApplicationController
       @dico[presta.id] = presta.polygon
     end
     authorize(@prestations)
+
+    if params[:category_sing].present?
+      @prestations = Prestation.where(category: params[:category_sing])
+    elsif params[:category_danse].present?
+      @prestations = Prestation.where(category: params[:category_danse])
+    else
+      @prestations = Prestation.all
+    end
   end
 
   def show
@@ -48,9 +57,6 @@ class PrestationsController < ApplicationController
     @prestation.destroy
     redirect_to user_prestations_path(@prestation.user)
   end
-
-
-
 
   private
 
