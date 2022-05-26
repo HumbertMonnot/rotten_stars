@@ -1,10 +1,9 @@
 class ReservationsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
     @reservations = policy_scope(Reservation)
-    @reservations_received= @reservations.select { |resa| resa.prestation.user == current_user }
-    @reservations_launched = @reservations.select { |resa| resa.user == current_user }
+    @reservations_received= @reservations[:received]
+    @reservations_launched = @reservations[:launched]
   end
 
   def edit
