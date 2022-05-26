@@ -4,6 +4,14 @@
     <h1><%= link_to :root do %>
       <i class="fa-solid fa-angles-left"></i>
       <% end %><%= @prestation.name %></h1>
+    <div class="poop-scale">
+      <% @average.times do  %>
+        <i class="fa-solid fa-poo"></i>
+      <% end %>
+      <% (5 - @average).times do  %>
+       <i class="fa-solid fa-poop"></i>
+      <% end %>
+    </div>
     <h2><%= @prestation.category %></h2>
     <h3><%= @prestation.address %></h3>
 
@@ -28,21 +36,7 @@
   </div>
 
   <div>
-
-          <% final_average = 0 %>
-          <% average = [] %>
-          <% @prestation.reservations.each do |reservation| %>
-            <% reservation.reviews.each do |review| %>
-              <% average << review.rating %>
-            <% end %>
-          <% end %>
-          <% if average.size > 0 %>
-            <% final_average = average.sum / average.size %>
-            <div><%= final_average %> / 5</div>
-          <% else %>
-            <p>No rating yet !</p>
-          <% end %>
-
+   <p><%= @average %> / 5</p>
   </div>
 
 

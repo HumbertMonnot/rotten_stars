@@ -20,19 +20,16 @@
           <h3><%=  prestation.punchline %></h3>
           <h3><%=  "#{prestation.price}€"%></h3>
         </div>
-        <div>
-          <% final_average = 0 %>
-          <% average = [] %>
-          <% prestation.reservations.each do |reservation| %>
-            <% reservation.reviews.each do |review| %>
-              <% average << review.rating %>
+        <div class="poop-scale">
+          <% if prestation.average != "No rating yet !" %>
+            <% prestation.average.times do  %>
+              <i class="fa-solid fa-poo"></i>
             <% end %>
-          <% end %>
-          <% if average.size > 0 %>
-            <% final_average = average.sum / average.size %>
-            <div><%= final_average %> / 5</div>
+            <% (5 - prestation.average).times do  %>
+              <i class="fa-solid fa-poop"></i>
+            <% end %>
           <% else %>
-            <p>No rating yet !</p>
+            <%= prestation.average  %>
           <% end %>
         </div>
     </div>
