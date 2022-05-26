@@ -3,10 +3,13 @@ body {
   height: 100vh;
 }
 
-#page-container {
- position: relative;
- min-height: 100vh;
- margin-bottom: 100px;
+#content {
+  position: relative;
+  min-height: 100vh;
+ }
+
+ #content-yield{
+   margin-bottom: 100px;
  }
 
 .footer {
@@ -20,10 +23,10 @@ body {
   color: #080808;
   bottom: 0;
   width: 100%;
-  margin-bottom: 0;
   font-family: 'open sans', sans-serif;
-  flex-shrink: 0;
+  position: absolute;
 }
+
 
 .footer-links {
   display: flex;
@@ -57,11 +60,9 @@ body {
   font-size: 20px;
 }
 
-
 .footer-links i:hover {
   color: #61E294;
 }
-
 
 .footer-links a:hover {
   opacity: 0.7;
@@ -84,5 +85,4 @@ body {
 
 .footer-links a {
   font-size: 10px;
-}
 }

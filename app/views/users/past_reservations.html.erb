@@ -3,8 +3,9 @@
     <%= cl_image_tag reservation.prestation.poster.key %>
     <div class="card-product-infos">
       <h2><%= reservation.prestation.name %></h2>
-      <p><%= reservation.total %></p> 
+      <p><%= reservation.total %></p>
     </div>
+    <%= link_to 'Comment', new_reservation_review_path(reservation) %>
   </div>
   <br>
 <% end %>

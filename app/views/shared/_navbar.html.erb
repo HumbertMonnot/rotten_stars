@@ -1,10 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <div id="text-navbar">
-      <h1>Rotten Stars</h1>
+      <h1><%= link_to "Rotten Stars", root_path %></h1>
     </div>
 
-    <%= image_tag "logo_rotten_stars", class:"center"%>
+    <img src="https://res.cloudinary.com/do3hinac6/image/upload/v1653488114/logo_rotten_stars_tpxx2s.png" class="center" >
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,36 +12,33 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        
         <% if user_signed_in? %>
-          <li class="nav-item active">
 
-          <li class="nav-item dropdown">
+                <li class="nav-item">
+                  <%= link_to "Dashboard", user_path(current_user), class: "btn mr-32" %>
+                </li>
+                
+                <li class="nav-item dropdown">
                   <% unless current_user.avatar.key.nil? %>
-                    <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
-                  <% end %>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                  </div>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to "user_path" do %>
-                    <p class="pr-12">Home</p>
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "user_reservations_path" do %>
-                    <p class="pr-32">Messages</p>
+                    <%= cl_image_tag current_user.avatar.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                    </div>
+                  <% else %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn mr-32" %>
                   <% end %>
                 </li>
 
         <% else %>
+        
           <li class="nav-item">
             <%= link_to "users/sign_in" do %>
             <% new_user_session_path %>
             <p class="pr-32">Connexion</p>
             <% end %>
           </li>
+        
         <% end %>
       </ul>
     </div>

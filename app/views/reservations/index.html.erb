@@ -1,19 +1,68 @@
 
-<% @reservations.each do |reservation| %>
+<h2>Demandes de prestations émises</h2>
+<div class="d-flex flex-wrap">
+  <% @reservations_launched.each do |reservation| %>
+    <div class = "card-product">
+      <%= cl_image_tag reservation.prestation.poster.key %>
+      <div class="card-product-infos">
+        <h2><%= reservation.prestation.name %></h2>
+        <p><%= reservation.total %> € au total</p> 
+        <p>Du <span class="font-weight-bold"><%= reservation.start_date.strftime("%d %b %Y") %></span> au <span class="font-weight-bold"><%= reservation.end_date.strftime("%d %b %Y") %></span> </p> 
+      </div>
+      
+      <% if reservation.state == "accepted" %>
+        <p class="state bg-success bold"><%= reservation.state.upcase %></p>
+      <% else %> 
+        <p class="state bg-danger bold"><%= reservation.state.upcase %></p>
+      <% end %>
+      
+    </div>
+    <br>
+  <% end %>
+</div>
+
+<br><br><br>
+<h2>Demandes de prestation reçues</h2>
+<h1>En attente de réponse</h1>
+<div class="d-flex flex-wrap">
+<% @reservations_received.select {|resa| resa.state == "pending" }.each do |reservation| %>
   <div class = "card-product">
     <%= cl_image_tag reservation.prestation.poster.key %>
-    <div class="card-product-infos">
-      <h2><%= reservation.prestation.name %></h2>
-      <p><%= reservation.total %></p> 
-      <% if reservation.state == "pending" %>
-        <%= simple_form_for [@user, reservation]  do |f| %>
-          <%= f.button :submit, name: "state", value: "accepted", class:"btn btn-success"%>
-          <%= f.button :submit, name: "state", value: "rejected", class:"btn btn-warning"%>
+    <div class="d-flex flex-column w-100">
+      <div class="card-product-infos">
+        <h2><%= reservation.prestation.name %></h2>
+        <p><%= reservation.total %> € au total</p> 
+      </div>
+      <div class="">
+        <%= simple_form_for [@user, reservation], class:"d-flex" do |f| %>
+          <%= f.button :submit, name: "state", value: "accepted", class:"bg-success bold"%>
+          <%= f.button :submit, name: "state", value: "rejected", class:"bg-danger bold"%>
         <% end %>
-      <% else %>
-        <p><%= reservation.state.upcase %></p>
-      <% end %>
+      </div>
     </div>
   </div>
   <br>
 <% end %>
+  </div>
+
+<h1>Verrouillées</h1>
+<div class="d-flex flex-wrap">
+  <% @reservations_received.reject {|resa| resa.state == "pending" }.each do |reservation| %>
+    <div class = "card-product">
+      <%= cl_image_tag reservation.prestation.poster.key %>
+      <div class="card-product-infos">
+        <h2><%= reservation.prestation.name %></h2>
+        <p><%= reservation.total %> € au total</p> 
+        <p>Du <span class="font-weight-bold"><%= reservation.start_date.strftime("%d %b %Y") %></span> au <span class="font-weight-bold"><%= reservation.end_date.strftime("%d %b %Y") %></span> </p> 
+      </div>
+      
+      <% if reservation.state == "accepted" %>
+        <p class="state bg-success bold"><%= reservation.state.upcase %></p>
+      <% else %> 
+        <p class="state bg-danger bold"><%= reservation.state.upcase %></p>
+      <% end %>
+      
+    </div>
+    <br>
+  <% end %>
+</div>

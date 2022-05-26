@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :past_reservations
     end
     resources :reservations, only: [:index, :edit, :update, :create]
-    resources :reviews, only: [:index, :new, :create]
+    # resources :reviews, only: [:index, :new, :create]
     resources :prestations, only: [:index, :new, :destroy, :create]
   end
 end
