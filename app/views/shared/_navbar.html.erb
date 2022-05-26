@@ -12,10 +12,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        
         <% if user_signed_in? %>
 
                 <li class="nav-item">
-                  <%= link_to "Dashboard", user_path(current_user), class: "btn btn-success mr-5" %>
+                  <%= link_to "Dashboard", user_path(current_user), class: "btn mr-32" %>
                 </li>
                 
                 <li class="nav-item dropdown">
@@ -25,17 +26,19 @@
                       <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
                   <% else %>
-                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-primary ml-2" %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn mr-32" %>
                   <% end %>
                 </li>
 
         <% else %>
+        
           <li class="nav-item">
             <%= link_to "users/sign_in" do %>
             <% new_user_session_path %>
             <p class="pr-32">Connexion</p>
             <% end %>
           </li>
+        
         <% end %>
       </ul>
     </div>
