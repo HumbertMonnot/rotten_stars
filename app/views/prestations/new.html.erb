@@ -1,20 +1,20 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-6 m-auto">
-      <h1> Propose ton expérience! </h1>
-<div class="card-create-prestation">
-      <%= simple_form_for [@user, @prestation] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :category %>
-        <%= f.input :punchline %>
-        <%= f.input :description %>
-        <%= f.input :price %>
-        <%= f.input :address %>
-        <%= f.input :distance %>
-        <%= f.input :poster, as: :file %>
-        <%= f.button :submit %>
-      <% end %>
-</div>
+      <h1> Propose ton expérience ! </h1>
+      <div class="card-create-prestation">
+            <%= simple_form_for [@user, @prestation] do |f| %>
+              <%= f.input :name %>
+              <%= f.input :category %>
+              <%= f.input :punchline %>
+              <%= f.input :description %>
+              <%= f.input :price %>
+              <%= f.input :address %>
+              <%= f.input :distance %>
+              <%= f.input :poster, as: :file %>
+              <%= f.button :submit, class: "btn btn-primary w-100 mt-3" %>
+            <% end %>
+      </div>
     </div>
   </div>
 </div>
