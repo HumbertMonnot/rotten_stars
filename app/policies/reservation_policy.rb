@@ -2,7 +2,10 @@ class ReservationPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      {
+        launched: scope.all.select { |resa| resa.user == user },
+        received: scope.all.select { |resa| resa.prestation.user == user },
+      } 
     end
   end
 
