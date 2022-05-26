@@ -1,3 +1,6 @@
+require 'open-uri'
+require "json"
+
 class Prestation < ApplicationRecord
   belongs_to :user
   has_many :reservations
@@ -13,4 +16,12 @@ class Prestation < ApplicationRecord
   validates :address, presence: true
   validates :distance, numericality: true
   validates :punchline, presence: true, length: { in: 5..30 }
+
+  def polygon
+    url_base = "https://api.mapbox.com/isochrone/v1/mapbox/"
+    url = "#{url_base}driving/#{self.longitude},#{self.latitude}?contours_minutes=#{self.distance}&polygons=true&access_token=#{ENV["MAPBOX_API_KEY"]}"
+    request = URI.open(url).read
+    response = JSON.parse(request)
+    return response["features"][0]["geometry"]["coordinates"][0]
+  end
 end

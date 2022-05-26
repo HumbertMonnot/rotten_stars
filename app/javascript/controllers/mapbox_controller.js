@@ -59,5 +59,6 @@ export default class extends Controller {
     );
     const data = await query.json();
     this.map.getSource('iso').setData(data);
+    console.log(data)
   }
 }

@@ -9,6 +9,10 @@ class PrestationsController < ApplicationController
 
   def home
     @prestations = Prestation.all
+    @dico = {}
+    @prestations.each do |presta|
+      @dico[presta.id] = presta.polygon
+    end
     authorize(@prestations)
   end
 

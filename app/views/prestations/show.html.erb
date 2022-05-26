@@ -7,15 +7,20 @@
   </div>
 
 <div class="d-flex">
+
   <div class="img-prestation d-flex flex-column">
     <%= cl_image_tag @prestation.poster.key,height: 400, width: 600 %>
   </div>
+
   <div style="width: 100%; height: 400px;" id="map-prestation"
     data-controller="mapbox"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-mapbox-info-array-value="<%= @info_array.to_json %>">
+    <h1>Zone de prestation</h1>
   </div>
+
 </div>
+
 <div class="p-prestation">
     <p class="ml-5 p-4" ><%= @prestation.description %></p>
 </div>
