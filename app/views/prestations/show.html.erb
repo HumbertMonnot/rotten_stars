@@ -4,14 +4,19 @@
       <%= link_to :root do %>
         <i class="fa-solid fa-circle-chevron-left"></i>Retour
       <% end %>
+      <h1><%= link_to @prestation.user.first_name, user_prestations_path(@prestation.user) %></h1>
       <h1 class="pl-32"><%= @prestation.name %></h1>
       <div class="poop-scale">
+      <% if @average != "No rating yet !" %>
         <% @average.times do  %>
           <i class="fa-solid fa-poo"></i>
         <% end %>
         <% (5 - @average).times do  %>
          <i class="fa-solid fa-poop"></i>
         <% end %>
+      <% else %>
+        <%= @average %>
+      <% end %>
       </div>
     </div>
     <h2><%= @prestation.category.capitalize %></h2>
@@ -34,10 +39,6 @@
       <% end %>
       <p>Total : <span id="reservation-total">0</span>€</p>
     </div>
-
-  <div>
-   <p><%= @average %> / 5</p>
-  </div>
 
 
   <div class="card-comment">

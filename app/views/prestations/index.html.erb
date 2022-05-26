@@ -2,7 +2,9 @@
 
 <% @prestations.each do |prestation| %>
   <div class = "card-product">
-    <%= cl_image_tag prestation.poster.key %>
+    <% unless prestation.poster.key.nil? %>
+      <%= cl_image_tag prestation.poster.key %>
+    <% end %>
     <div class="card-product-infos">
       <h2><%= prestation.name %></h2>
       <p><%= prestation.category %></p> 
