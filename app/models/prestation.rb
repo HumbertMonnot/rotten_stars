@@ -23,6 +23,7 @@ class Prestation < ApplicationRecord
     request = URI.open(url).read
     response = JSON.parse(request)
     return response["features"][0]["geometry"]["coordinates"][0]
+  end
 
   def average
     average = []
@@ -36,6 +37,5 @@ class Prestation < ApplicationRecord
       return final_average
     end
     return "No rating yet !"
-
   end
 end
