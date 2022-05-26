@@ -3,7 +3,11 @@
   <div class="text-description">
     <h1><%= link_to :root do %>
       <i class="fa-solid fa-angles-left"></i>
-      <% end %><%= @prestation.name %></h1>
+      <% end %>
+      <%= link_to prestation_path(@user) do %>
+      <%= @prestation.name %>
+      <% end %>
+    </h1>
     <h2><%= @prestation.category %></h2>
     <h3><%= @prestation.address %></h3>
 
