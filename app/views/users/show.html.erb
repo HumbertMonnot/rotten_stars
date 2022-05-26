@@ -40,17 +40,17 @@
   </div>
 </div>
 
-<div class="container-dash-message">
-  <div class="titre-my-message">
+<div class="container-dash-comment">
+  <div class="titre-my-comment">
   <h2>My message</h2>
   </div>
   <% @user.reservations.each do |reservation| %>
-  <div class="col-sm card-message">
+  <div class="col-sm card-my-comment">
     <div class="card-dash-prestation-name">
       <%= reservation.prestation.name %>
     </div>
     <% reservation.reviews.each do |review| %>
-    <div class="card-dash-prestation-message">
+    <div class="card-dash-prestation-comment">
       <%= review.comment %>
     </div>
     <% end %>

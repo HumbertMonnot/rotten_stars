@@ -12,8 +12,7 @@
 
 <div class="ctr-cards">
 <% @prestations.limit(10).each do |prestation| %>
-
-    <%= link_to prestation_path(prestation) do %>
+  <%= link_to prestation_path(prestation) do %>
     <div class="card-prestation">
       <%= cl_image_tag prestation.poster.key,height: 200, width: 200%>
         <div class="text-prestation">
@@ -21,7 +20,22 @@
           <h3><%=  prestation.punchline %></h3>
           <h3><%=  "#{prestation.price}€"%></h3>
         </div>
-      </div>
+        <div>
+          <% final_average = 0 %>
+          <% average = [] %>
+          <% prestation.reservations.each do |reservation| %>
+            <% reservation.reviews.each do |review| %>
+              <% average << review.rating %>
+            <% end %>
+          <% end %>
+          <% if average.size > 0 %>
+            <% final_average = average.sum / average.size %>
+            <div><%= final_average %> / 5</div>
+          <% else %>
+            <p>No rating yet !</p>
+          <% end %>
+        </div>
+    </div>
   <% end %>
 <% end  %>
 </div>
