@@ -15,8 +15,9 @@ class PrestationsController < ApplicationController
   def show
     @reservation = Reservation.new
     authorize(@prestation)
+    @average = average(@prestation)
   end
-  
+
   def new
     @prestation = Prestation.new
     @user = User.find(params[:user_id])
@@ -39,6 +40,9 @@ class PrestationsController < ApplicationController
     redirect_to user_prestations_path(@prestation.user)
   end
 
+
+
+
   private
 
   def set_prestation
@@ -47,5 +51,19 @@ class PrestationsController < ApplicationController
 
   def prestation_params
     params.require(:prestation).permit(:name, :category, :description, :price, :address, :distance, :punchline)
+  end
+
+  def average(prestation)
+    average = []
+    prestation.reservations.each do |reservation|
+      reservation.reviews.each do |review|
+        average << review.rating
+      end
+    end
+    if average.size.positive?
+      final_average = average.sum / average.size
+      return final_average
+    end
+    return "No rating yet !"
   end
 end
