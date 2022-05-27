@@ -5,7 +5,6 @@ class PrestationsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @prestations = policy_scope(Prestation).where(user: @user)
-    @prestation = Prestation.find_by("category")
   end
 
   def home
@@ -16,10 +15,19 @@ class PrestationsController < ApplicationController
     end
     authorize(@prestations)
 
+    # filter
     if params[:category_sing].present?
       @prestations = Prestation.where(category: params[:category_sing])
     elsif params[:category_danse].present?
       @prestations = Prestation.where(category: params[:category_danse])
+    elsif params[:category_humour].present?
+      @prestations = Prestation.where(category: params[:category_humour])
+    elsif params[:category_soiree].present?
+      @prestations = Prestation.where(category: params[:category_soiree])
+    elsif params[:category_entreprise].present?
+      @prestations = Prestation.where(category: params[:category_entreprise])
+    elsif params[:category_autre].present?
+      @prestations = Prestation.where(category: params[:category_autre])
     else
       @prestations = Prestation.all
     end

@@ -6,25 +6,28 @@
 }
 
 #checkboxes{
-  width: 30%;
   display: flex;
   align-items: flex-end;
   padding-bottom: 25px;
   justify-content: space-around;
-  width: 40%;
+  width: 50%;
 }
 
 .checkbox{
   position: relative;
   width: 10%;
   text-align: center;
+  color: black;
+  opacity: 0.6;
 }
 
-#category_sing, #category_danse {
+
+#category_sing, #category_danse, #category_humour, #category_soiree, #category_autre, #category_entreprise {
   width: 20px;
   position: absolute;
   left: 21px;
   bottom: 15px;
+  border: lightgrey;
 }
 
 #category_btn {
