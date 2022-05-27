@@ -1,43 +1,56 @@
-<div class="filters">
-<%= form_tag :root, id:"checkboxes", class:"pl-32", method: :get do %>
-<div class="checkbox">
-   <%= label_tag('chante') %>
-   <%= check_box_tag('category_sing', "sing") %>
-   </div>
-   <div class="checkbox">
-   <%= label_tag('danse') %>
-   <%= check_box_tag('category_danse', "danse") %>
-    </div>
-    <div class="checkbox">
-   <%= label_tag('humour') %>
-   <%= check_box_tag('category_humour', "humour") %>
-    </div>
-    <div class="checkbox">
-   <%= label_tag('soirée') %>
-   <%= check_box_tag('category_soiree', "soirée") %>
-    </div>
-    <div class="checkbox">
-   <%= label_tag('entreprise') %>
-   <%= check_box_tag('category_entreprise', "entreprise") %>
-    </div>
-    <div class="checkbox">
-   <%= label_tag('autre') %>
-   <%= check_box_tag('category_autre', "autre") %>
-    </div>
-    <div class="checkbox-submit">
-   <%= submit_tag "Rechercher", class:"btn w-150" %>
-   </div>
- <% end %>
 
-  <form action="/", class = "m-25">
-    <label for="search"></label>
-    <input type="text" id="search" placeholder="Votre adresse" name="address" >
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </form>
+<div data-controller="filter-category">
+  <div class="filters">
+    <%= form_with url: '/', id: "checkboxes", class:"pl-32", data: { filter_category_target: "form" }, method: :get, remote: true do |f| %>
+      <div class="checkbox">
+        <%= f.label :category, "chante" %>
+        <%= check_box_tag :category, 'sing', false, data: { action: "change->filter-category#update", filter_category_target: 'checkbox' } %>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :category, "danse" %>
+        <%= check_box_tag :category, 'danse', false, data: { action: "change->filter-category#update", filter_category_target: 'checkbox' } %>
+      </div>
+
+      <%# <div class="checkbox"> %>
+        <%# <%= label_tag('humour') %>
+        <%# <%= check_box_tag('category_humour', "humour") %>
+      <%# </div> %>
+
+      <%# <div class="checkbox"> %>
+        <%# <%= label_tag('soirée') %>
+        <%# <%= check_box_tag('category_soiree', "soirée") %>
+      <%# </div> %>
+
+      <%# <div class="checkbox"> %>
+        <%# <%= label_tag('entreprise') %>
+        <%# <%= check_box_tag('category_entreprise', "entreprise") %>
+      <%# </div> %>
+
+      <%# <div class="checkbox"> %>
+        <%# <%= label_tag('autre') %>
+        <%# <%= check_box_tag('category_autre', "autre") %>
+      <%# </div> %>
+
+      <%# <div class="checkbox-submit"> %>
+        <%# <%= submit_tag "Rechercher", class:"btn w-150" %>
+      <%# </div> %>
+    <% end %>
+
+    <form action="/", class = "m-25">
+      <label for="search"></label>
+      <input type="text" id="search" placeholder="Votre adresse" name="address" >
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+  <%= render 'prestations/list', prestations: @prestations %>
 </div>
 
-   <% if params[:address].present? %>
-      <%= render 'shared/filter' %>
-   <%  else%>
-     <%= render 'shared/newestprestations' %>
-   <%  end%>
+
+
+<% if params[:address].present? %>
+  <%= render 'shared/filter' %>
+<%# <% else %>
+  <%# <%= render 'shared/newestprestations' %>
+<% end %>

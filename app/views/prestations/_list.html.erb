@@ -1,0 +1,16 @@
+<div data-filter-category-target="list">
+  <div class="ctr-cards">
+  <% @prestations.limit(20).each do |prestation| %>
+    <%= link_to prestation_path(prestation) do %>
+      <div class="card-prestation">
+      <%= cl_image_tag prestation.poster.key,height: 200, width: 200%>
+        <div class="text-prestation">
+          <h2><%=  prestation.name %></h2>
+          <h3><%=  prestation.punchline %></h3>
+          <h3><%=  "#{prestation.price}€"%></h3>
+        </div>
+      </div>
+    <% end %>
+  <% end  %>
+  </div>
+</div>
