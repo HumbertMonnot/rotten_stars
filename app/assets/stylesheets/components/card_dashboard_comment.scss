@@ -6,6 +6,13 @@
   flex-wrap: wrap;
 }
 
+.container-dash-comment h2 {
+  font-family: "open sans", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: black;
+ }
+
 .card-my-comment {
   overflow: hidden;
   width: 20%;
@@ -21,6 +28,7 @@
   margin: 5px;
   padding: 5px;
   border-bottom: medium solid #61E294;
+  font-family: "open sans", sans-serif;
 
 }
 
@@ -29,6 +37,7 @@
   font-weight: 600;
   font-size: 24px;
   box-shadow: inset 0 -.8em 0 #61E294;
+  font-family: "open sans", sans-serif;
 }
 
 .card-dash-prestation-comment {

@@ -1,32 +1,38 @@
-<div class="mlr-50">
-<h2>Prestations</h2>
+<div class="container mb-3">
+    <h1>Mes Expériences</h1>
 
-  <% @prestations.each do |prestation| %>
-    <div class = "card-product">
-      <% unless prestation.poster.key.nil? %>
-        <%= cl_image_tag prestation.poster.key %>
+    <% @prestations.each do |prestation| %>
+        <div class = "card-product">
+
+          <% unless prestation.poster.key.nil? %>
+            <%= cl_image_tag prestation.poster.key %>
+          <% end %>
+
+
+        <div class="card-product-infos">
+            <h2><%= prestation.name %></h2>
+            <p><%= prestation.category %></p>
+            <p><%= prestation.price %> € par jour de prestation</p>
+        </div>
+
       <% end %>
-      <div class="card-product-infos">
-        <h2><%= prestation.name %></h2>
-        <p><%= prestation.category %></p>
-        <p><%= prestation.price %> € par jour de prestation</p>
-      </div>
-    </div>
-  <% end %>
-  <% @prestations.each do | prestation | %>
-    <% prestation.reservations.each do | reservation | %>
-      <% reservation.reviews.each do | review | %>
-        <div>
-          <% if review.rating %>
+
+      <% @prestations.each do | prestation | %>
+        <% prestation.reservations.each do | reservation | %>
+          <% reservation.reviews.each do | review | %>
             <div>
-              <p><%= review.rating %><i class="fa-solid fa-poo rotten-stars-pink"></i></p>
-            </div>
-            <div>
-              <%= review.comment %>
+              <% if review.rating %>
+                <div>
+                  <p><%= review.rating %><i class="fa-solid fa-poo rotten-stars-pink"></i></p>
+                </div>
+                <div>
+                  <%= review.comment %>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
+    </div>
+
 </div>
