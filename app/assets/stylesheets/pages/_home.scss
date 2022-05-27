@@ -8,6 +8,14 @@
   text-underline-offset: 3px;
 }
 
-body {
+#map-filter {
+  width: 400px;
+  height: 400px;
+  position: sticky;
+  top: 40px;
+  margin-right: 40px
+}
+
+  body {
   background-color: white;
 }
