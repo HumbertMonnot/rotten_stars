@@ -1,22 +1,17 @@
 <div class="container mb-3">
-    <h1>Expériences de <%= @prestations.first.user.first_name %></h1>
-    <div class="">
-    <% @prestations.each do |prestation| %>
-      <%= link_to prestation_path(prestation) do %>
-        <div class = "card-product">
+    <h1>Mes Expériences</h1>
 
+    <% @prestations.each do |prestation| %>
+          <div class = "card-product">
             <% unless prestation.poster.key.nil? %>
               <%= cl_image_tag prestation.poster.key %>
             <% end %>
+
           <div class="card-product-infos">
               <h2><%= prestation.name %></h2>
               <p><%= prestation.category %></p>
               <p><%= prestation.price %> € par jour de prestation</p>
           </div>
-
-        </div>
-        <% end %>
-       <% end %>
     </div>
-    </div>
+      <% end %>
 </div>

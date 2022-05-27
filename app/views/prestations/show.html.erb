@@ -1,14 +1,14 @@
-<div class="container mb-3">
+<div class="container presta-column mb-3">
   <div class="text-description pt-32">
     <div id="retour">
       <%= link_to :root do %>
         <i class="fa-solid fa-circle-chevron-left"></i>Retour
       <% end %>
     </div>
-    
-      <div class="d-flex">
-        <h1 class="pl-32"><%= @prestation.name %></h1>
-        <div class="poop-scale">
+
+      <div class="d-flex align-flexbox">
+        <h1><%= @prestation.name %></h1>
+        <div>
           <% if @average != "0 commentaire" %>
             <% @average.times do  %>
               <i class="fa-solid fa-poo rotten-stars-pink"></i>
@@ -21,8 +21,9 @@
           <% end %>
         </div>
       </div>
-      <h1 id="lien-user">Voir toutes les prestations de <%= link_to @prestation.user.first_name, user_prestations_path(@prestation.user) %></h1>
-      <h2><%= @prestation.category.capitalize %></h2>
+      <%= link_to user_prestations_path(@prestation.user), id:"lien-user" do %>
+        <h1>Voir toutes les prestations de <%= @prestation.user.first_name %></h1>
+      <% end %>
   </div>
 
   <div class="d-flex">
@@ -58,7 +59,7 @@
       </div>
 
       <div class="card-comment">
-        <h2 class="card-comment-title">Commentaire :</h2>
+        <h2 class="card-comment-title">Commentaires :</h2>
         <% @prestation.reservations.each do |reservation| %>
           <% reservation.reviews.each do |review| %>
             <% if review.comment%>
