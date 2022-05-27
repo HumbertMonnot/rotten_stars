@@ -1,17 +1,19 @@
-<div class="container mb-3">
-  <h1> Mes réservations passées ! </h1>
+ <h1> Mes réservations passées ! </h1>
+<div class="container container-grid mb-3">
     <% @list_past_reservations.each do |reservation| %>
-      <div class = "card-product">
-        <%= cl_image_tag reservation.prestation.poster.key %>
-        <div class="card-product-infos">
-          <h2><%= reservation.prestation.name %></h2>
-          <p><%= reservation.total %></p>
-        </div>
-        <% if reservation.prestation.user != current_user%>
-          <%= link_to new_reservation_review_path(reservation) do %>
-            <i class="fa-solid fa-message input-comment rotten-stars-green"></i>
+      <div>
+        <div class = "card-product">
+          <%= cl_image_tag reservation.prestation.poster.key %>
+          <div class="card-product-infos">
+            <h2><%= reservation.prestation.name %></h2>
+            <p><%= reservation.total %></p>
+          </div>
+          <% if reservation.prestation.user != current_user%>
+            <%= link_to new_reservation_review_path(reservation) do %>
+              <i class="fa-solid fa-message input-comment rotten-stars-green"></i>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
      <br>
     <% end %>
