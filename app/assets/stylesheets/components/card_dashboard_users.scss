@@ -4,15 +4,16 @@
   margin-top: 30px;
   margin-bottom: 30px;
   align-items: center;
-  height: 400px;
+  // height: 400px;
 }
 
 .container-block {
   width: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  // justify-content: space-between;
+  height: 90vh;
+
 }
 
 .container-identity-section {
@@ -25,7 +26,9 @@
   padding: 25px 25px;
   text-align: center;
   height: 100%;
-  }
+  border: thick double #61E294;
+  border-radius: 2%;
+}
 
 .container-identity-section img {
   width: 100px;
@@ -42,13 +45,19 @@ text-align: center
 
 
 .card_actions {
+  margin: 15px;
   justify-content: space-around;
   padding: 25px 25px;
   background-color: white;
   font-size: 16px;
   font-family: "open sans", sans-serif;
+  margin-top: 0;
+  border: 1px solid #61E294;;
+  width: 400px;
   &:hover{
-    border: 3px solid #61E294;
+    padding: 20px 20px;
+    border: 2px solid #61E294;
+    font-weight: bold;
   }
 }
 

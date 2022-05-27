@@ -1,15 +1,18 @@
-<% @list_past_reservations.each do |reservation| %>
-  <div class = "card-product">
-    <%= cl_image_tag reservation.prestation.poster.key %>
-    <div class="card-product-infos">
-      <h2><%= reservation.prestation.name %></h2>
-      <p><%= reservation.total %></p>
-    </div>
-    <% if reservation.prestation.user != current_user%>
-      <%= link_to new_reservation_review_path(reservation) do %>
-        <i class="fa-solid fa-message input-comment rotten-stars-green"></i>
-      <% end %>
+<div class="container mb-3">
+  <h1> Mes réservations passées ! </h1>
+    <% @list_past_reservations.each do |reservation| %>
+      <div class = "card-product">
+        <%= cl_image_tag reservation.prestation.poster.key %>
+        <div class="card-product-infos">
+          <h2><%= reservation.prestation.name %></h2>
+          <p><%= reservation.total %></p>
+        </div>
+        <% if reservation.prestation.user != current_user%>
+          <%= link_to new_reservation_review_path(reservation) do %>
+            <i class="fa-solid fa-message input-comment rotten-stars-green"></i>
+          <% end %>
+        <% end %>
+      </div>
+     <br>
     <% end %>
-  </div>
-  <br>
-<% end %>
+</div>
