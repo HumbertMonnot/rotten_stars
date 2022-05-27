@@ -5,7 +5,7 @@ class Prestation < ApplicationRecord
   belongs_to :user
   has_many :reservations
   has_one_attached :poster
-  
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -36,6 +36,6 @@ class Prestation < ApplicationRecord
       final_average = average.sum / average.size
       return final_average
     end
-    return "No rating yet !"
+    return "0 commentaire"
   end
 end

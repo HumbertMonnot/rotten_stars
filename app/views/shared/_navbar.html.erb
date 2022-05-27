@@ -26,14 +26,14 @@
                       <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
                   <% else %>
-                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn mr-32" %>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn" %>
                   <% end %>
                 </li>
 
         <% else %>
 
           <li class="nav-item">
-            <%= link_to "Connexion", new_user_session_path, class: "btn mr-32" %>
+            <%= link_to "Connexion", new_user_session_path, class: "btn mr-32 c-w" %>
           </li>
 
         <% end %>

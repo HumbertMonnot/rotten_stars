@@ -7,6 +7,7 @@ class PrestationsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @prestations = policy_scope(Prestation).where(user: @user)
+    # @average = average(@prestation)
   end
 
   def home
@@ -27,6 +28,23 @@ class PrestationsController < ApplicationController
       # raise
     end
     authorize(@prestations)
+
+    # filter
+    if params[:category_sing].present?
+      @prestations = Prestation.where(category: params[:category_sing])
+    elsif params[:category_danse].present?
+      @prestations = Prestation.where(category: params[:category_danse])
+    elsif params[:category_humour].present?
+      @prestations = Prestation.where(category: params[:category_humour])
+    elsif params[:category_soiree].present?
+      @prestations = Prestation.where(category: params[:category_soiree])
+    elsif params[:category_entreprise].present?
+      @prestations = Prestation.where(category: params[:category_entreprise])
+    elsif params[:category_autre].present?
+      @prestations = Prestation.where(category: params[:category_autre])
+    else
+      @prestations = Prestation.all
+    end
   end
 
   def show
@@ -62,9 +80,6 @@ class PrestationsController < ApplicationController
     redirect_to user_prestations_path(@prestation.user)
   end
 
-
-
-
   private
 
   def set_prestation
@@ -74,6 +89,7 @@ class PrestationsController < ApplicationController
   def prestation_params
     params.require(:prestation).permit(:name, :category, :description, :price, :address, :distance, :punchline)
   end
+
 
   def average(prestation)
     average = []
@@ -86,6 +102,6 @@ class PrestationsController < ApplicationController
       final_average = average.sum / average.size
       return final_average
     end
-    return "No rating yet !"
+    return "0 commentaire"
   end
 end

@@ -3,6 +3,7 @@
   background: white;
   height: 15vh;
   position: relative;
+  border-bottom: 1px solid lightgray;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -30,7 +31,7 @@ h1{
   padding: 16px;
 }
 
-.navbar-lewagon a {
+.navbar-lewagon h1 a {
   text-decoration: none;
   color: black
 }
@@ -50,7 +51,7 @@ h1{
 }
 
 #navbarSupportedContent #navbarDropdown {
-  width: 30%;
+  width: 5%;
   float: right;
   margin-right: 24px;
 }
