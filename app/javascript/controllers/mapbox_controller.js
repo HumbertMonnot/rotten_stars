@@ -35,8 +35,8 @@ export default class extends Controller {
           layout: {},
           paint: {
             // The fill color for the layer is set to a light purple
-            'fill-color': '#5a3fc0',
-            'fill-opacity': 0.3
+            'fill-color': 'rgb(255,192,203)',
+            'fill-opacity': 0.7
           }
         },
         'poi-label'

@@ -18,3 +18,12 @@
 
 // Google font
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');
+
+
+.mapboxgl-marker {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border:1px solid gray;
+  background-color:lightblue;
+}

@@ -5,6 +5,7 @@
 <div  data-controller="search"
       data-search-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-search-center-value="<%= @center.to_json %>"
+      data-search-markers-value="<%= @markers.to_json %>"
       data-search-env-value="<%= Rails.env %>"
       data-search-dico-value="<%= @dico.to_json %>"
       class="d-flex">

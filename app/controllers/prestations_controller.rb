@@ -19,7 +19,8 @@ class PrestationsController < ApplicationController
         name: presta.name,
         punchline: presta.punchline,
         price: presta.price,
-        cloudi: presta.poster.key
+        cloudi: presta.poster.key,
+        marker: [presta.longitude, presta.latitude]
       }
     end
     if params[:address].present?
