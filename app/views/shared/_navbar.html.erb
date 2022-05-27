@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon plr-48">
   <div class="container-fluid">
     <div id="text-navbar">
       <h1><%= link_to "Rotten Stars", root_path %></h1>
@@ -12,13 +12,13 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        
+
         <% if user_signed_in? %>
 
                 <li class="nav-item">
                   <%= link_to "Dashboard", user_path(current_user), class: "btn mr-32" %>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                   <% unless current_user.avatar.key.nil? %>
                     <%= cl_image_tag current_user.avatar.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -31,14 +31,11 @@
                 </li>
 
         <% else %>
-        
+
           <li class="nav-item">
-            <%= link_to "users/sign_in" do %>
-            <% new_user_session_path %>
-            <p class="pr-32">Connexion</p>
-            <% end %>
+            <%= link_to "Connexion", new_user_session_path, class: "btn mr-32" %>
           </li>
-        
+
         <% end %>
       </ul>
     </div>
