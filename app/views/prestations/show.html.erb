@@ -4,12 +4,13 @@
       <%= link_to :root do %>
         <i class="fa-solid fa-circle-chevron-left"></i>Retour
       <% end %>
+
       <h1><%= link_to @prestation.user.first_name, user_prestations_path(@prestation.user) %></h1>
       <h1 class="pl-32"><%= @prestation.name %></h1>
       <div class="poop-scale">
-      <% if @average != "No rating yet !" %>
+      <% if @average != "0 commentaire" %>
         <% @average.times do  %>
-          <i class="fa-solid fa-poo"></i>
+          <i class="fa-solid fa-poo rotten-stars-pink"></i>
         <% end %>
         <% (5 - @average).times do  %>
          <i class="fa-solid fa-poop"></i>
@@ -21,26 +22,27 @@
     </div>
     <h2><%= @prestation.category.capitalize %></h2>
   </div>
-<div class="d-flex">
 
-  <div class="img-prestation d-flex flex-column">
-    <%= cl_image_tag @prestation.poster.key,height: 400, width: 600 %>
+  <div class="d-flex">
+
+    <div class="img-prestation d-flex flex-column">
+      <%= cl_image_tag @prestation.poster.key,height: 400, width: 600 %>
+    </div>
+
+    <div style="width: 100%; height: 400px;" id="map-prestation"
+      data-controller="mapbox"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-mapbox-info-array-value="<%= @info_array.to_json %>">
+      <h1>Zone de prestation</h1>
+    </div>
+
   </div>
 
-  <div style="width: 100%; height: 400px;" id="map-prestation"
-    data-controller="mapbox"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-mapbox-info-array-value="<%= @info_array.to_json %>">
-    <h1>Zone de prestation</h1>
-  </div>
-
-</div>
-
-<div class="p-prestation">
+  <div class="p-prestation">
     <p class="ml-5 p-4" ><%= @prestation.description %></p>
-</div>
+  </div>
 
-<br><br><br>
+  <br><br><br>
   <div class="ctr-card">
     <div class="card-reservation">
       <h2>Prix : <span id="prestation-price"><%= @prestation.price %></span>€</h2>
@@ -51,15 +53,22 @@
       <% end %>
       <p>Total : <span id="reservation-total">0</span>€</p>
     </div>
+  </div>
 
   <div class="card-comment">
-    <h2 class="card-comment-title">Comment :</h2>
-      <% @prestation.reservations.each do |reservation|%>
-        <h3 class="card-comment-name"><%= reservation.user.first_name %>, <%= reservation.user.last_name %></h3>
-        <% reservation.reviews.each do |review| %>
-          <p class="card-comment-p"><%= review.comment %></p>
+    <h2 class="card-comment-title">Commentaire :</h2>
+    <% @prestation.reservations.each do |reservation| %>
+      <% reservation.reviews.each do |review| %>
+        <% if review.comment%>
+          <% @prestation.reservations.each do |reservation|%>
+              <h3 class="card-comment-name"><%= reservation.user.first_name %>, <%= reservation.user.last_name %></h3>
+              <% reservation.reviews.each do |review| %>
+                <p class="card-comment-rating"><%= review.rating %><i class="fa-solid fa-poo rotten-stars-pink"></i></p>
+                <p class="card-comment-p"><%= review.comment %></p>
+              <% end %>
+          <% end %>
         <% end %>
-      <% end %>
+      <% end %>-
+    <% end %>
   </div>
-</div>
 </div>

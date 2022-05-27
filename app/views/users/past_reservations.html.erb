@@ -5,8 +5,10 @@
       <h2><%= reservation.prestation.name %></h2>
       <p><%= reservation.total %></p>
     </div>
-    <%= link_to new_reservation_review_path(reservation) do %>
-      <i class="fa-solid fa-message input-comment"></i>
+    <% if reservation.prestation.user != current_user%>
+      <%= link_to new_reservation_review_path(reservation) do %>
+        <i class="fa-solid fa-message input-comment rotten-stars-green"></i>
+      <% end %>
     <% end %>
   </div>
   <br>

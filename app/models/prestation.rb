@@ -36,6 +36,6 @@ class Prestation < ApplicationRecord
       final_average = average.sum / average.size
       return final_average
     end
-    return "No rating yet !"
+    return "0 commentaire"
   end
 end
