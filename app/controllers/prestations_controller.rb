@@ -30,20 +30,25 @@ class PrestationsController < ApplicationController
     authorize(@prestations)
 
     # filter
-    if params[:category_sing].present?
-      @prestations = Prestation.where(category: params[:category_sing])
-    elsif params[:category_danse].present?
-      @prestations = Prestation.where(category: params[:category_danse])
-    elsif params[:category_humour].present?
-      @prestations = Prestation.where(category: params[:category_humour])
-    elsif params[:category_soiree].present?
-      @prestations = Prestation.where(category: params[:category_soiree])
-    elsif params[:category_entreprise].present?
-      @prestations = Prestation.where(category: params[:category_entreprise])
-    elsif params[:category_autre].present?
-      @prestations = Prestation.where(category: params[:category_autre])
+    if params[:category].present?
+      @prestations = Prestation.where(category: params[:category])
+    # elsif params[:category].present?
+    #   @prestations = Prestation.where(category: params[:category])
+    # elsif params[:category_humour].present?
+    #   @prestations = Prestation.where(category: params[:category_humour])
+    # elsif params[:category_soiree].present?
+    #   @prestations = Prestation.where(category: params[:category_soiree])
+    # elsif params[:category_entreprise].present?
+    #   @prestations = Prestation.where(category: params[:category_entreprise])
+    # elsif params[:category_autre].present?
+    #   @prestations = Prestation.where(category: params[:category_autre])
     else
       @prestations = Prestation.all
+    end
+    # ajax
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'list.html', locals: { prestations: @prestations } }
     end
   end
 
