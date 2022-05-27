@@ -1,3 +1,5 @@
+require 'geocoder'
+
 class PrestationsController < ApplicationController
   before_action :set_prestation, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:home, :index, :new, :show]
@@ -9,9 +11,20 @@ class PrestationsController < ApplicationController
 
   def home
     @prestations = Prestation.all
-    @dico = {}
-    @prestations.each do |presta|
-      @dico[presta.id] = presta.polygon
+    @dico = @prestations.map do |presta|
+      {
+        id: presta.id,
+        polygon: presta.polygon,
+        name: presta.name,
+        punchline: presta.punchline,
+        price: presta.price,
+        cloudi: presta.poster.key
+      }
+    end
+    if params[:address].present?
+      # @request = Geocoder.search(params[:address])
+      @center = [Geocoder.search(params[:address]).first.data["lon"].to_f, Geocoder.search(params[:address]).first.data["lat"].to_f]
+      # raise
     end
     authorize(@prestations)
   end
