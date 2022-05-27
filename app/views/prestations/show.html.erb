@@ -4,28 +4,30 @@
       <%= link_to :root do %>
         <i class="fa-solid fa-circle-chevron-left"></i>Retour
       <% end %>
-
-      <h1><%= link_to @prestation.user.first_name, user_prestations_path(@prestation.user) %></h1>
-      <h1 class="pl-32"><%= @prestation.name %></h1>
-      <div class="poop-scale">
-      <% if @average != "0 commentaire" %>
-        <% @average.times do  %>
-          <i class="fa-solid fa-poo rotten-stars-pink"></i>
-        <% end %>
-        <% (5 - @average).times do  %>
-         <i class="fa-solid fa-poop"></i>
-        <% end %>
-      <% else %>
-        <%= @average %>
-      <% end %>
-      </div>
     </div>
-    <h2><%= @prestation.category.capitalize %></h2>
+    
+      <div class="d-flex">
+        <h1 class="pl-32"><%= @prestation.name %></h1>
+        <div class="poop-scale">
+          <% if @average != "0 commentaire" %>
+            <% @average.times do  %>
+              <i class="fa-solid fa-poo rotten-stars-pink"></i>
+            <% end %>
+            <% (5 - @average).times do  %>
+            <i class="fa-solid fa-poop"></i>
+            <% end %>
+          <% else %>
+            <%= @average %>
+          <% end %>
+        </div>
+      </div>
+      <h1 id="lien-user">Voir toutes les prestations de <%= link_to @prestation.user.first_name, user_prestations_path(@prestation.user) %></h1>
+      <h2><%= @prestation.category.capitalize %></h2>
   </div>
 
   <div class="d-flex">
 
-    <div class="img-prestation d-flex flex-column">
+    <div class="img-prestation">
       <%= cl_image_tag @prestation.poster.key,height: 400, width: 600 %>
     </div>
 
